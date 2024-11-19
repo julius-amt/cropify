@@ -1,5 +1,6 @@
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
+import FarmingIllustration from "@/public/8065485.jpg";
 import HomeImage from "@/public/home-image.jpeg";
 
 const Home = () => {
@@ -156,13 +157,13 @@ const Home = () => {
                             </p>
                         </div>
 
-                        <div className="h-full w-full rounded-full">
+                        <div className="h-full w-full">
                             <Image
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/FarmBot_Genesis_different_crops_being_grown_together.jpg/1280px-FarmBot_Genesis_different_crops_being_grown_together.jpg"
+                                src={FarmingIllustration}
                                 alt=""
-                                width={100}
-                                height={100}
-                                className="rounded w-full h-full blur-sm object-fill"
+                                width={400}
+                                height={300}
+                                className="w-full h-full object-cover"
                             />
                         </div>
                     </div>
@@ -346,9 +347,9 @@ const Home = () => {
                                         stroke="currentColor"
                                     >
                                         <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
                                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                                         />
                                     </svg>
