@@ -26,45 +26,11 @@ const Home = () => {
                             </a>
                         </div>
 
-                        {/* <Button
-                            content={<>
-                                <svg
-                                    className="block w-6 h-6"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 8h16M4 16h16"
-                                    ></path>
-                                </svg>
-                                <svg
-                                    className="hidden w-6 h-6"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    ></path>
-                                </svg>
-                            </>}
-                            className="inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100"
-                        /> */}
-
                         <div className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-10">
                             <Link
                                 href="#features"
                                 title=""
-                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-orange-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Features{" "}
@@ -73,7 +39,7 @@ const Home = () => {
                             <a
                                 href="#"
                                 title=""
-                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-orange-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Solutions{" "}
@@ -82,7 +48,7 @@ const Home = () => {
                             <a
                                 href="#"
                                 title=""
-                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-orange-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Resources{" "}
@@ -91,41 +57,41 @@ const Home = () => {
                             <a
                                 href="#"
                                 title=""
-                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-orange-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Pricing{" "}
                             </a>
                         </div>
 
-                        <a
-                            href="#"
+                        <Link
+                            href="/signup"
                             title=""
-                            className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-yellow-300 hover:text-black focus:text-black focus:bg-yellow-300 font-semibold text-white bg-black rounded-full"
+                            className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-base transition-all duration-200 hover:bg-orange-500 focus:text-black focus:bg-orange-500 font-semibold text-white bg-black rounded-full"
                             role="button"
                         >
                             {" "}
                             Join Now{" "}
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </header>
 
-            <section className="bg-gray-50 bg-opacity-30 py-10 sm:py-16 lg:py-24 h-dvh">
+            <section className="bg-gray-50 bg-opacity-30 py-10 sm:py-16 lg:py-20 h-dvh">
                 <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="grid items-center grid-cols-1 gap-x-40 lg:grid-cols-2">
+                    <div className="grid items-center grid-cols-1 gap-x-20 lg:grid-cols-2">
                         <div>
-                            <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">
+                            <p className="text-lg font-semibold tracking-wider text-green-600 uppercase">
                                 Lets have a chat before your next cultivation
                             </p>
-                            <h1 className="mt-4 text-4xl font-bold text-black lg:mt-8 sm:text-6xl xl:text-8xl">
+                            <h1 className="mt-4 text-4xl font-mono text-black lg:mt-8 sm:text-6xl xl:text-8xl">
                                 Get expert advice for your crop & soil now
                             </h1>
                             <p className="mt-4 text-base text-black lg:mt-8 sm:text-xl">
                                 Grow your vegetations fast with the right tool.
                             </p>
 
-                            <Link href="#">
+                            <Link href="/signup">
                                 <Button
                                     content={
                                         <>
@@ -146,14 +112,14 @@ const Home = () => {
                                             </svg>
                                         </>
                                     }
-                                    className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full lg:mt-16 hover:bg-yellow-400 focus:bg-yellow-400"
+                                    className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-white transition-all duration-200 bg-orange-500 rounded-full lg:mt-16 hover:bg-orange-400 focus:bg-orange-400"
                                 />
                             </Link>
 
                             <p className="mt-5 text-gray-600">
                                 Already joined us?{" "}
                                 <Link
-                                    href="#"
+                                    href="/login"
                                     title=""
                                     className="text-black transition-all duration-200 hover:underline"
                                 >
@@ -212,7 +178,7 @@ const Home = () => {
                                                     viewBox="0 0 24 24"
                                                     strokeWidth={1.5}
                                                     stroke="currentColor"
-                                                    className="size-7 ml-1"
+                                                    className="size-7 ml-4"
                                                 >
                                                     <path
                                                         strokeLinecap="round"
@@ -222,7 +188,7 @@ const Home = () => {
                                                 </svg>
                                             </>
                                         }
-                                        className="text-2xl font-medium text-center text-gray-900 rounded-full bg-orange-300 w-48 h-10 flex items-center justify-center p-4 my-3 cursor-pointer hover:bg-orange-400"
+                                        className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
                                     />
                                 </Link>
 
@@ -234,9 +200,9 @@ const Home = () => {
                                 <div className="flex items-center justify-center mt-10 space-x-3">
                                     <div className="bg-orange-500 rounded-full w-20 h-1.5"></div>
 
-                                    <div className="bg-gray-200 rounded-full w-12 h-1.5"></div>
+                                    <div className="bg-orange-300 rounded-full w-12 h-1.5"></div>
 
-                                    <div className="bg-gray-200 rounded-full w-12 h-1.5"></div>
+                                    <div className="bg-orange-200 rounded-full w-12 h-1.5"></div>
                                 </div>
                             </div>
                         </div>
@@ -275,7 +241,7 @@ const Home = () => {
                                                 </svg>
                                             </>
                                         }
-                                        className="text-2xl font-medium text-center text-gray-900 rounded-full bg-orange-300 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
+                                        className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
                                     />
                                 </Link>
                             </div>
@@ -283,7 +249,7 @@ const Home = () => {
                     </div>
                     <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
                         <h1 className="text-9xl font-thin">
-                            <strong className="text-9xl font-extralight text-gray-950 bg-orange-100 p-1">
+                            <strong className="text-9xl font-extralight text-gray-950 bg-[#bcf0b5] p-1">
                                 {" "}
                                 Want to maximize Yields?
                             </strong>{" "}
@@ -331,7 +297,7 @@ const Home = () => {
                                                 </svg>
                                             </>
                                         }
-                                        className="text-2xl font-medium text-center text-gray-900 rounded-full bg-orange-300 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
+                                        className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
                                     />
                                 </Link>
                             </div>
@@ -393,7 +359,7 @@ const Home = () => {
                                         <a
                                             href="#"
                                             title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
                                         >
                                             {" "}
                                             About{" "}
@@ -404,7 +370,7 @@ const Home = () => {
                                         <a
                                             href="#"
                                             title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
                                         >
                                             {" "}
                                             Features{" "}
@@ -415,7 +381,7 @@ const Home = () => {
                                         <a
                                             href="#"
                                             title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
                                         >
                                             {" "}
                                             Works{" "}
@@ -426,7 +392,7 @@ const Home = () => {
                                         <a
                                             href="#"
                                             title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
+                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
                                         >
                                             {" "}
                                             Career{" "}
@@ -434,7 +400,6 @@ const Home = () => {
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
 
                         <hr className="mt-16 mb-10 border-gray-200" />
@@ -450,7 +415,7 @@ const Home = () => {
                                     <a
                                         href="#"
                                         title=""
-                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-500 hover:text-white focus:text-white hover:bg-orange-500 hover:border-orange-500 focus:border-orange-500"
                                     >
                                         <svg
                                             className="w-4 h-4"
@@ -467,7 +432,7 @@ const Home = () => {
                                     <a
                                         href="#"
                                         title=""
-                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-500 hover:text-white focus:text-white hover:bg-orange-500 hover:border-orange-500 focus:border-orange-500"
                                     >
                                         <svg
                                             className="w-4 h-4"
@@ -484,7 +449,7 @@ const Home = () => {
                                     <a
                                         href="#"
                                         title=""
-                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-500 hover:text-white focus:text-white hover:bg-orange-500 hover:border-orange-500 focus:border-orange-500"
                                     >
                                         <svg
                                             className="w-4 h-4"
@@ -507,7 +472,7 @@ const Home = () => {
                                     <a
                                         href="#"
                                         title=""
-                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-600 hover:text-white focus:text-white hover:bg-orange-600 hover:border-orange-600 focus:border-orange-600"
+                                        className="flex items-center justify-center text-gray-800 transition-all duration-200 bg-transparent border border-gray-300 rounded-full w-7 h-7 focus:bg-orange-500 hover:text-white focus:text-white hover:bg-orange-500 hover:border-orange-500 focus:border-orange-500"
                                     >
                                         <svg
                                             className="w-4 h-4"
