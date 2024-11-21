@@ -17,7 +17,7 @@ export default function ChatPage() {
             <span className="font-semibold">ChatAI</span>
           </div>
           
-          <button className="w-full h-[50px] text-[24px] bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+          <button className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
             + New Chat
           </button>
           
@@ -31,19 +31,18 @@ export default function ChatPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
-
         </div>
 
         {/* Chat List */}
-        <div className="flex-1 overflow-y-auto bg-gray-50 mb-5">
+        <div className="flex-1 overflow-y-auto">
           <div className="p-2">
             <div className="space-y-1">
-              {['Folder', 'Favorite', 'Archive', "Amn"].map((item, index) => (
+              {['Folder', 'Favorite', 'Archive'].map((item, index) => (
                 <div key={index} className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-100 rounded-lg cursor-pointer">
                   <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
                   </svg>
-                  <span className="text-gray-700 text-[20px]">{item}</span>
+                  <span className="text-gray-700">{item}</span>
                   <span className="ml-auto text-gray-400 text-sm">8</span>
                 </div>
               ))}
@@ -51,14 +50,16 @@ export default function ChatPage() {
           </div>
         </div>
         
-        <div className='h-[200px] flex flex-col space-y-3 w-full items-center'>
-            <button className="w-[90%]  h-[60px] bg-indigo-600 text-white text-[24px] py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
-             AgroAssis
+        <div className='flex items-center flex-col space-y-3 '>
+            <button className="w-[80%] bg-indigo-600  text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+            AgroScan
           </button>
-          <button className="w-[90%]  h-[60px] bg-indigo-600 text-white text-[24px] py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
-             AgroScan
+          <button className="w-[80%] bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">
+            AgroAsiss
           </button>
         </div>
+
+
         {/* User Profile */}
         <div className="p-4 border-t">
           <div className="flex items-center space-x-3">
@@ -75,7 +76,7 @@ export default function ChatPage() {
       <div className="flex-1 flex flex-col">
         {/* Chat Header */}
         <div className="h-16 border-b bg-white flex items-center justify-between px-6">
-          <h1 className="font-semibold text-2xl">Chat</h1>
+          <h1 className="font-semibold">Chat</h1>
           <div className="flex items-center space-x-4">
             <button className="p-2 hover:bg-gray-100 rounded-full">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
