@@ -1,7 +1,11 @@
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import FarmingIllustration from "@/public/8065485.jpg";
-import HomeImage from "@/public/home-image.jpeg";
+import Button from "./_components/Button";
+import Link from "next/link";
+import ChatIcon from "@/public/online-doctor-concept/3712074.jpg";
+import FarmImage from "@/public/side-view-women-taking-care-plants.jpg";
+import PlantScan from "@/public/smiley-woman-holding-tablet-full-shot.jpg";
 
 const Home = () => {
     return (
@@ -22,55 +26,54 @@ const Home = () => {
                             </a>
                         </div>
 
-                        <button
-                            type="button"
+                        {/* <Button
+                            content={<>
+                                <svg
+                                    className="block w-6 h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 8h16M4 16h16"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    className="hidden w-6 h-6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    ></path>
+                                </svg>
+                            </>}
                             className="inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100"
-                        >
-                            <svg
-                                className="block w-6 h-6"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 8h16M4 16h16"
-                                ></path>
-                            </svg>
-
-                            <svg
-                                className="hidden w-6 h-6"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                ></path>
-                            </svg>
-                        </button>
+                        /> */}
 
                         <div className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-10">
-                            <a
-                                href="#"
+                            <Link
+                                href="#features"
                                 title=""
-                                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Features{" "}
-                            </a>
+                            </Link>
 
                             <a
                                 href="#"
                                 title=""
-                                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Solutions{" "}
@@ -79,7 +82,7 @@ const Home = () => {
                             <a
                                 href="#"
                                 title=""
-                                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Resources{" "}
@@ -88,7 +91,7 @@ const Home = () => {
                             <a
                                 href="#"
                                 title=""
-                                className="text-base text-black transition-all duration-200 hover:text-opacity-80"
+                                className="text-lg text-black transition-all duration-200 hover:text-opacity-80 hover:text-yellow-500 hover:delay-100 hover:ease-in-out hover:origin-left hover:transition-all hover:duration-200 focus:transition-colors focus:duration-200"
                             >
                                 {" "}
                                 Pricing{" "}
@@ -108,9 +111,9 @@ const Home = () => {
                 </div>
             </header>
 
-            <section className="bg-[#FCF8F1] bg-opacity-30 py-10 sm:py-16 lg:py-24">
+            <section className="bg-gray-50 bg-opacity-30 py-10 sm:py-16 lg:py-24 h-dvh">
                 <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
+                    <div className="grid items-center grid-cols-1 gap-x-40 lg:grid-cols-2">
                         <div>
                             <p className="text-base font-semibold tracking-wider text-blue-600 uppercase">
                                 Lets have a chat before your next cultivation
@@ -122,38 +125,40 @@ const Home = () => {
                                 Grow your vegetations fast with the right tool.
                             </p>
 
-                            <a
-                                href="#"
-                                title=""
-                                className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full lg:mt-16 hover:bg-yellow-400 focus:bg-yellow-400"
-                                role="button"
-                            >
-                                Join for free
-                                <svg
-                                    className="w-6 h-6 ml-8 -mr-2"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="1.5"
-                                        d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
-                                </svg>
-                            </a>
+                            <Link href="#">
+                                <Button
+                                    content={
+                                        <>
+                                            Join for free
+                                            <svg
+                                                className="w-6 h-6 ml-8 -mr-2"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="1.5"
+                                                    d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                />
+                                            </svg>
+                                        </>
+                                    }
+                                    className="inline-flex items-center px-6 py-4 mt-8 font-semibold text-black transition-all duration-200 bg-yellow-300 rounded-full lg:mt-16 hover:bg-yellow-400 focus:bg-yellow-400"
+                                />
+                            </Link>
 
                             <p className="mt-5 text-gray-600">
                                 Already joined us?{" "}
-                                <a
+                                <Link
                                     href="#"
                                     title=""
                                     className="text-black transition-all duration-200 hover:underline"
                                 >
                                     Log in
-                                </a>
+                                </Link>
                             </p>
                         </div>
 
@@ -171,134 +176,59 @@ const Home = () => {
             </section>
 
             {/* display features */}
-            <section className="bg-white">
-                {/* <div className="grid grid-cols-1 lg:grid-cols-2">
+
+            <section className="bg-white" id="features">
+                {/* <h1 className="text-black font-semibold leading-loose text-4xl flex justify-center items-center py-10">
+                    Cropify&lsquo;s Capabilities
+                </h1> */}
+                <div className="grid grid-cols-1 lg:grid-cols-2">
                     <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
-                        <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-                            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">
-                                Sign in to Celebration
-                            </h2>
-                            <p className="mt-2 text-base text-gray-600">
-                                Don’t have an account?{" "}
-                                <a
-                                    href="#"
-                                    title=""
-                                    className="font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700"
-                                >
-                                    Create a free account
-                                </a>
-                            </p>
-
-                            <form action="#" method="POST" className="mt-8">
-                                <div className="space-y-5">
-                                    <div>
-                                        <label className="text-base font-medium text-gray-900">
-                                            {" "}
-                                            Email address{" "}
-                                        </label>
-                                        <div className="mt-2.5">
-                                            <input
-                                                type="email"
-                                                name=""
-                                                id=""
-                                                placeholder="Enter email to get started"
-                                                className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div className="flex items-center justify-between">
-                                            <label className="text-base font-medium text-gray-900">
-                                                {" "}
-                                                Password{" "}
-                                            </label>
-
-                                            <a
-                                                href="#"
-                                                title=""
-                                                className="text-sm font-medium text-blue-600 hover:underline hover:text-blue-700 focus:text-blue-700"
-                                            >
-                                                {" "}
-                                                Forgot password?{" "}
-                                            </a>
-                                        </div>
-                                        <div className="mt-2.5">
-                                            <input
-                                                type="password"
-                                                name=""
-                                                id=""
-                                                placeholder="Enter your password"
-                                                className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-blue-600 focus:bg-white caret-blue-600"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <button
-                                            type="submit"
-                                            className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700"
-                                        >
-                                            Log in
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div className="mt-3 space-y-3">
-                                <button
-                                    type="button"
-                                    className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
-                                >
-                                    <div className="absolute inset-y-0 left-0 p-4">
-                                        <svg
-                                            className="w-6 h-6 text-rose-500"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                        >
-                                            <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
-                                        </svg>
-                                    </div>
-                                    Sign in with Google
-                                </button>
-
-                                <button
-                                    type="button"
-                                    className="relative inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-gray-700 transition-all duration-200 bg-white border-2 border-gray-200 rounded-md hover:bg-gray-100 focus:bg-gray-100 hover:text-black focus:text-black focus:outline-none"
-                                >
-                                    <div className="absolute inset-y-0 left-0 p-4">
-                                        <svg
-                                            className="w-6 h-6 text-[#2563EB]"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="currentColor"
-                                        >
-                                            <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"></path>
-                                        </svg>
-                                    </div>
-                                    Sign in with Facebook
-                                </button>
-                            </div>
-                        </div>
+                        {/* <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto"> */}
+                        <h1 className="text-9xl font-thin">
+                            Grow Better with Your Farming Assistant.
+                        </h1>
+                        {/* </div> */}
                     </div>
 
                     <div className="flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8">
                         <div>
-                            <img
+                            <Image
                                 className="w-full mx-auto"
-                                src="https://cdn.rareblocks.xyz/collection/celebration/images/signup/1/cards.png"
+                                src={ChatIcon}
                                 alt=""
+                                width={400}
+                                height={300}
                             />
 
-                            <div className="w-full max-w-md mx-auto xl:max-w-xl">
-                                <h3 className="text-2xl font-bold text-center text-black">
-                                    Design your own card
-                                </h3>
+                            <div className="w-full max-w-md mx-auto xl:max-w-xl flex flex-col items-center justify-center">
+                                <Link href="#">
+                                    <Button
+                                        content={
+                                            <>
+                                                AgroAssist
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth={1.5}
+                                                    stroke="currentColor"
+                                                    className="size-7 ml-1"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                    />
+                                                </svg>
+                                            </>
+                                        }
+                                        className="text-2xl font-medium text-center text-gray-900 rounded-full bg-orange-300 w-48 h-10 flex items-center justify-center p-4 my-3 cursor-pointer hover:bg-orange-400"
+                                    />
+                                </Link>
+
                                 <p className="leading-relaxed text-center text-gray-500 mt-2.5">
-                                    Amet minim mollit non deserunt ullamco est
-                                    sit aliqua dolor do amet sint. Velit officia
-                                    consequat duis.
+                                    Smart farming, powered by AI — your trusted
+                                    farming assistant.
                                 </p>
 
                                 <div className="flex items-center justify-center mt-10 space-x-3">
@@ -311,7 +241,103 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                    <div className="bg-gray-50 ">
+                        <div className="relative">
+                            <Image
+                                className="w-full mx-auto object-cover h-full"
+                                src={FarmImage}
+                                alt=""
+                                width={1000}
+                                height={1000}
+                            />
+
+                            <div className="absolute bottom-3 right-3">
+                                <Link href="#">
+                                    <Button
+                                        content={
+                                            <>
+                                                AgroAdvisor
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth={1.5}
+                                                    stroke="currentColor"
+                                                    className="size-7 ml-4"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                    />
+                                                </svg>
+                                            </>
+                                        }
+                                        className="text-2xl font-medium text-center text-gray-900 rounded-full bg-orange-300 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
+                                    />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+                        <h1 className="text-9xl font-thin">
+                            <strong className="text-9xl font-extralight text-gray-950 bg-orange-100 p-1">
+                                {" "}
+                                Want to maximize Yields?
+                            </strong>{" "}
+                            Find the Best Time to Plant Your Crops!
+                        </h1>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                    <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+                        <h1 className="text-9xl font-thin">
+                            Upload crop photos, get instant insights, and
+                            protect your harvest.
+                        </h1>
+                    </div>
+
+                    <div className="bg-gray-50">
+                        <div className="relative">
+                            <Image
+                                className="w-full mx-auto object-cover h-full"
+                                src={PlantScan}
+                                alt=""
+                                width={400}
+                                height={300}
+                            />
+
+                            <div className="absolute bottom-3 right-3">
+                                <Link href="#">
+                                    <Button
+                                        content={
+                                            <>
+                                                AgroScan
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    strokeWidth={1.5}
+                                                    stroke="currentColor"
+                                                    className="size-7 ml-4"
+                                                >
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                    />
+                                                </svg>
+                                            </>
+                                        }
+                                        className="text-2xl font-medium text-center text-gray-900 rounded-full bg-orange-300 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
+                                    />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <footer className="">
@@ -337,10 +363,10 @@ const Home = () => {
                                 <a
                                     href="#"
                                     title=""
-                                    className="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700 mt-7"
+                                    className="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-green-600 rounded-md hover:bg-green-700 focus:bg-green-700 mt-7"
                                 >
                                     <svg
-                                        className="w-6 h-6"
+                                        className="w-6 h-6 mr-2"
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
@@ -353,7 +379,7 @@ const Home = () => {
                                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                                         />
                                     </svg>
-                                    Start Live Chat
+                                    Start Chat now
                                 </a>
                             </div>
 
@@ -409,57 +435,6 @@ const Home = () => {
                                 </ul>
                             </div>
 
-                            {/* <div className="lg:col-span-2">
-                                <p className="text-base font-semibold text-gray-900">
-                                    Help
-                                </p>
-
-                                <ul className="mt-6 space-y-4">
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                        >
-                                            {" "}
-                                            Customer Support{" "}
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                        >
-                                            {" "}
-                                            Delivery Details{" "}
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                        >
-                                            {" "}
-                                            Terms & Conditions{" "}
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-600 focus:text-orange-600"
-                                        >
-                                            {" "}
-                                            Privacy Policy{" "}
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div> */}
                         </div>
 
                         <hr className="mt-16 mb-10 border-gray-200" />
@@ -541,8 +516,8 @@ const Home = () => {
                                             fill="currentColor"
                                         >
                                             <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
+                                                fillRule="evenodd"
+                                                clipRule="evenodd"
                                                 d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"
                                             ></path>
                                         </svg>
@@ -552,21 +527,6 @@ const Home = () => {
                         </div>
                     </div>
                 </section>
-
-                {/* <div
-                        className="w-full h-[20vh] bg-[#f1f2f1e3] flex flex-col justify-center items-center text-gray-700"
-                    >
-                        <h1>
-                            Join the future of intelligent agriculture with
-                            Cropify AI!{" "}
-                        </h1>
-                        <p>
-                            Embrace our cutting-edge technology and transform
-                            your farming operations into a sustainable,
-                            efficient, and prosperous venture. ower of AI in
-                            agriculture today! 🌐
-                        </p>
-                    </div> */}
             </footer>
         </div>
     );
