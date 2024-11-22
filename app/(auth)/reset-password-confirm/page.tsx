@@ -67,7 +67,7 @@ export default function ResetPasswordConfirm() {
 												}
 												value={password}
 												placeholder="New Password"
-												className="block w-full py-4 pl-10 outline-none pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-lg bg-gray-50 caret-blue-600 focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
+												className="block w-full py-4 pl-10 outline-none pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-lg bg-gray-50 caret-orange-500 focus:border-orange-600 focus:bg-white focus:ring-1 focus:ring-orange-600"
 												required
 											/>
 
@@ -151,7 +151,7 @@ export default function ResetPasswordConfirm() {
 													)
 												}
 												placeholder="Confirm Password"
-												className="block w-full py-4 pl-10 outline-none pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-lg bg-gray-50 caret-blue-600 focus:border-blue-600 focus:bg-white focus:ring-1 focus:ring-blue-600"
+												className="block w-full py-4 pl-10 outline-none pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-lg bg-gray-50 caret-orange-500 focus:border-orange-600 focus:bg-white focus:ring-1 focus:ring-orange-600"
 												required
 											/>
 
@@ -206,7 +206,7 @@ export default function ResetPasswordConfirm() {
 									<div>
 										<button
 											type="submit"
-											className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700"
+											className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-orange-500 border border-transparent rounded-md focus:outline-none hover:bg-orange-600 focus:bg-orange-600"
 										>
 											Reset Password
 										</button>
@@ -215,7 +215,7 @@ export default function ResetPasswordConfirm() {
 									<div className="text-center mt-3">
 										<Link
 											href="/login"
-											className="font-medium text-blue-500 transition-all duration-200 hover:text-blue-600 hover:underline"
+											className="font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline"
 										>
 											Back to Login
 										</Link>

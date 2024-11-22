@@ -26,7 +26,7 @@ export default function ChatPage() {
                         </a>
                     </div>
 
-                    <button className="w-full font-bold bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                    <button className="w-full font-bold bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200  transition-colors">
                         + New Chat
                     </button>
 
@@ -90,12 +90,12 @@ export default function ChatPage() {
 
                 <div className="flex items-center flex-col space-y-3 ">
                   <Link href="/agroscan" className="w-[80%]">
-                    <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                    <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">
                         AgroScan
                     </button>
                   </Link>
                   <Link href="/agroadvisor" className="w-[80%]">
-                    <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                    <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
                         AgroAdvisor
                     </button>
                   </Link>

@@ -250,19 +250,7 @@ export default function Login() {
                                     </div>
                                     Sign in with Facebook
                                 </button>
-                            </div>
-                            <div>
-                                <h3 className="flex items-center justify-start text-base text-gray-600 font-medium py-4">
-                                    Want new activation link?{" "}
-                                    <Link
-                                        href="/resend-activation"
-                                        title=""
-                                        className=" text-orange-500 hover:underline hover:text-orange-700 focus:text-orange-500 ml-2"
-                                    >
-                                        Resend Activation
-                                    </Link>{" "}
-                                </h3>
-                            </div>
+                            </div>  
                         </div>
                     </div>
 
