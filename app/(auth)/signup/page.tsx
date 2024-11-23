@@ -9,6 +9,7 @@ import SignupImage from "@/public/rb_2148889459.png";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useSignUp } from "@clerk/nextjs";
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ const Signup = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
+    const {isLoaded, signUp, setActive} = useSignUp();
 
     const router = useRouter();
 
@@ -28,36 +30,21 @@ const Signup = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // const handleSignUpWithCredentials = async () => {
-    // 	setIsLoading(true);
-    // 	try {
-    // 		const form = new FormData();
-    // 		form.append("username", formData.username);
-    // 		form.append("email", formData.email);
-    // 		form.append("phone", formData.telephone);
-    // 		form.append("password", formData.newPassword);
-    // 		form.append("re_password", formData.confirmPassword);
-
-    // 		const response = await fetch("/api/v1/auth/signup", {
-    // 			method: "POST",
-    // 			body: form,
-    // 		});
-    // 		const data = await response.json();
-    // 		if (response.ok) {
-    // 			if (data.success) {
-    // 				toast.success(data.message, { duration: 4000 });
-    // 				router.push("/login");
-    // 				setIsLoading(false);
-    // 				return;
-    // 			}
-    // 			toast.error(data.error, { duration: 4000 });
-    // 		}
-    // 		toast.error(data.error, { duration: 4000 });
-    // 	} catch (error: any) {
-    // 		throw new Error("Error", error);
-    // 	}
-    // 	setIsLoading(false);
-    // };
+    const handleSignUpWithCredentials = async () => {
+    	setIsLoading(true);
+        if (!isLoaded) return;
+    	try {
+            await signUp.create({
+                emailAddress: formData.email,
+                firstName: formData.username,
+                phoneNumber: formData.telephone,
+                password: formData.newPassword,
+            })
+    	} catch (error: any) {
+    		throw new Error("Error", error);
+    	}
+    	setIsLoading(false);
+    };
 
     const disableBtn = () => {
         return (

@@ -8,11 +8,13 @@ import toast from "react-hot-toast";
 import LoginImage from "@/public/rb_2148889459.png";
 import Link from "next/link";
 import React from "react";
+import { useSignIn } from "@clerk/nextjs";
 
 export default function Login() {
     const [loginData, setLoginData] = useState({ email: "", password: "" });
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const { isLoaded, signIn, setActive } = useSignIn();
     const router = useRouter();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -250,7 +252,7 @@ export default function Login() {
                                     </div>
                                     Sign in with Facebook
                                 </button>
-                            </div>  
+                            </div>
                         </div>
                     </div>
 
@@ -271,10 +273,10 @@ export default function Login() {
                                 </h3>
                                 <p className="leading-relaxed text-center text-gray-500 mt-2.5">
                                     Cropify is a platform that helps farmers
-									manage their farms, crops, and livestock
-									efficiently. It provides real-time insights
-									and recommendations to help farmers make
-									informed decisions.
+                                    manage their farms, crops, and livestock
+                                    efficiently. It provides real-time insights
+                                    and recommendations to help farmers make
+                                    informed decisions.
                                 </p>
 
                                 <div className="flex items-center justify-center mt-10 space-x-3">
