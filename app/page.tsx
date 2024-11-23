@@ -1,13 +1,19 @@
+"use client"
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import FarmingIllustration from "@/public/8065485.jpg";
+import HomeImage from "@/public/home-image.jpeg";
+import { useIndexContext } from "@/src/context";
 import Button from "./_components/Button";
 import Link from "next/link";
 import ChatIcon from "@/public/online-doctor-concept/3712074.jpg";
 import FarmImage from "@/public/side-view-women-taking-care-plants.jpg";
 import PlantScan from "@/public/smiley-woman-holding-tablet-full-shot.jpg";
 
+
 const Home = () => {
+    const { state } = useIndexContext();
+    
     return (
         <div className="bg-white min-h-dvh max-h-max">
             <header className="bg-[#FCF8F1] bg-opacity-30">
