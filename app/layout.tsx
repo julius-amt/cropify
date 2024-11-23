@@ -1,8 +1,9 @@
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import {Archivo} from "next/font/google";
 import "./globals.css";
-
+import {IndexContextProvider} from "@/src/context/index"
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
 
@@ -32,7 +33,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
-        {children}
+        <IndexContextProvider>
+          {children}
+        </IndexContextProvider>
+        
       </body>
     </html>
   );
