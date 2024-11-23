@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import {Archivo} from "next/font/google";
 import "./globals.css";
-import {IndexContextProvider} from "@/src/context/index"
+import {IndexContextProvider} from "@/app/_context/index"
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
 
