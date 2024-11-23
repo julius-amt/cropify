@@ -89,12 +89,12 @@ export default function ChatPage() {
                 </div>
 
                 <div className="flex items-center flex-col space-y-3 ">
-                  <Link href="/agroscan" className="w-[80%]">
+                  <Link href="/agro-scan" className="w-[80%]">
                     <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">
                         AgroScan
                     </button>
                   </Link>
-                  <Link href="/agroadvisor" className="w-[80%]">
+                  <Link href="/agro-advisor" className="w-[80%]">
                     <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
                         AgroAdvisor
                     </button>

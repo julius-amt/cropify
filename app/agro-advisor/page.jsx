@@ -33,7 +33,6 @@ export default function AgroAdvisorPage() {
             {/* Sidebar */}
             <div className="w-80 bg-white border-r flex flex-col h-full">
                 <div className="p-4 border-b">
-                    {/* <div className="flex items-center space-x-2 mb-4"> */}
                     <div className="flex-shrink-0 py-5">
                         <a href="#" title="" className="flex gap-2">
                             <Image
@@ -116,7 +115,7 @@ export default function AgroAdvisorPage() {
                             AgroAssist
                         </button>
                     </Link>
-                    <Link href="/agroscan" className="w-[80%]">
+                    <Link href="/agro-scan" className="w-[80%]">
                         <button className="w-full bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
                             AgroScan
                         </button>

@@ -276,7 +276,7 @@ const Home = () => {
                             />
 
                             <div className="absolute bottom-3 right-3">
-                                <Link href="#">
+                                <Link href="/agro-scan">
                                     <Button
                                         content={
                                             <>
