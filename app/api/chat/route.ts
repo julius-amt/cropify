@@ -2,8 +2,11 @@
 import { NextResponse, NextRequest } from "next/server";
 import { authenticatedUser } from "../_lib/authenticateUser";
 import Chat from "../_models/chat";
+import connect from "../_lib/dbConfig";
 
 const { AMALIAI_BASE_URL, AMALIAI_KEY } = process.env;
+
+connect();
 
 export const POST = async (request: NextRequest) => {
     try {
@@ -89,6 +92,8 @@ export const GET = async (request: NextRequest) => {
         });
         return NextResponse.json({ success: true, data: chats });
     } catch (error: unknown) {
+        console.log(error);
+
         return NextResponse.json({ error: error }, { status: 500 });
     }
 };
