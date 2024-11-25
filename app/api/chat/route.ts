@@ -3,6 +3,7 @@ import { NextResponse, NextRequest } from "next/server";
 import { authenticatedUser } from "../_lib/authenticateUser";
 import Chat from "../_models/chat";
 import connect from "../_lib/dbConfig";
+import mongoose from "mongoose";
 
 const { AMALIAI_BASE_URL, AMALIAI_KEY } = process.env;
 
@@ -52,9 +53,10 @@ export const POST = async (request: NextRequest) => {
             let data = await response.json();
             data = data.data;
 
+            console.log(user);
             // save record to database
             const newChat = new Chat({
-                user: user._id,
+                user: user.id,
                 aiResponse: data.content,
                 message,
             });
@@ -86,10 +88,15 @@ export const GET = async (request: NextRequest) => {
                 { status: 401 }
             );
         }
-
-        const chats = await Chat.find({ user: user._id }).sort({
+        console.log(user);
+        const userId = new mongoose.Types.ObjectId(user.id);
+        console.log(userId);
+        const chats = await Chat.find({
+            user: userId,
+        }).sort({
             createdAt: -1,
         });
+
         return NextResponse.json({ success: true, data: chats });
     } catch (error: unknown) {
         console.log(error);
