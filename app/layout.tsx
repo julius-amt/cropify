@@ -3,6 +3,7 @@ import { Archivo } from "next/font/google";
 import "./globals.css";
 import { IndexContextProvider } from "@/app/_context/index";
 import { Toaster } from "react-hot-toast";
+import {ChatContextProvider} from "@/src/content/ChatContent"
 
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
@@ -25,7 +26,11 @@ export default function RootLayout({
                     reverseOrder={false}
                     toastOptions={{ duration: 3000 }}
                 />
-                <IndexContextProvider>{children}</IndexContextProvider>
+                <IndexContextProvider>
+                    <ChatContextProvider>
+                    {children}
+                    </ChatContextProvider>
+                </IndexContextProvider>
             </body>
         </html>
     );
