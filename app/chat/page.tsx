@@ -1,12 +1,20 @@
 "use client";
 // pages/chat.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
-
+import { chatContext } from "@/src/content/ChatContent";
+import { useContext } from "react";
 export default function ChatPage() {
+
+    const  {getUserMessage, postMessage, fetchChat} = useContext(chatContext)
+
     const [prompt, setPrompt] = useState("");
+
+    useEffect(()=>{
+        fetchChat()
+    },[])
 
     return (
         <div className="h-screen flex bg-gray-50">
@@ -189,12 +197,15 @@ export default function ChatPage() {
                     <div className="max-w-4xl mx-auto relative">
                         <input
                             type="text"
-                            value={prompt}
-                            onChange={(e) => setPrompt(e.target.value)}
+                            // value={prompt}
+                            // onChange={(e) => setPrompt(e.target.value)}
+                            onChange={getUserMessage}
                             placeholder="Enter a prompt here..."
                             className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-indigo-500"
                         />
-                        <button className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600">
+                        <button className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600"
+                            onClick={()=>postMessage()}
+                        >
                             <svg
                                 className="w-5 h-5"
                                 fill="none"
