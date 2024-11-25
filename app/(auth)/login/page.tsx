@@ -19,34 +19,34 @@ export default function Login() {
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
     };
 
-    // const handleLogin = async () => {
-    // 	setIsLoading(true);
-    // 	try {
-    // 		const response = await fetch("/api/v1/auth/login", {
-    // 			method: "POST",
-    // 			headers: {
-    // 				"Content-Type": "application/json",
-    // 			},
-    // 			body: JSON.stringify({
-    // 				email: loginData.email,
-    // 				password: loginData.password,
-    // 			}),
-    // 		});
-    // 		if (response.ok) {
-    // 			toast.success("Logged in successfully 🎉", { duration: 4000 });
-    // 			router.push("/");
-    // 		} else if (response.status === 500) {
-    // 			toast.error("An error accoured, try again!", {
-    // 				duration: 4000,
-    // 			});
-    // 		} else {
-    // 			toast.error("Invalid credentials!", { duration: 4000 });
-    // 		}
-    // 	} catch (error: any) {
-    // 		throw new Error("Error", error);
-    // 	}
-    // 	setIsLoading(false);
-    // };
+    const handleLogin = async () => {
+    	setIsLoading(true);
+    	try {
+    		const response = await fetch("/api/auth/login", {
+    			method: "POST",
+    			headers: {
+    				"Content-Type": "application/json",
+    			},
+    			body: JSON.stringify({
+    				email: loginData.email,
+    				password: loginData.password,
+    			}),
+    		});
+    		if (response.ok) {
+    			toast.success("Logged in successfully 🎉", { duration: 4000 });
+    			router.push("/chat");
+    		} else if (response.status === 500) {
+    			toast.error("An error accoured, try again!", {
+    				duration: 4000,
+    			});
+    		} else {
+    			toast.error("Invalid credentials!", { duration: 4000 });
+    		}
+    	} catch (error: any) {
+    		throw new Error("Error", error);
+    	}
+    	setIsLoading(false);
+    };
 
     const disableBtn = () => {
         return !loginData.email || !loginData.password || isLoading;
@@ -195,7 +195,7 @@ export default function Login() {
 
                                     <div>
                                         <button
-                                            // onClick={handleLogin}
+                                            onClick={handleLogin}
                                             type="submit"
                                             disabled={disableBtn()}
                                             className={`inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-orange-500 from-fuchsia-60 border border-transparent rounded-md focus:outline-none hover:bg-orange-700 focus:bg-orange-700 ${

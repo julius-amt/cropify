@@ -17,38 +17,38 @@ export default function ForgotPassword() {
 		setEmail(e.target.value);
 	};
 
-	// const handleForgotPassword = async (
-	// 	e: React.ChangeEvent<HTMLInputElement>
-	// ) => {
-	// 	e.preventDefault();
-	// 	setIsLoading(true);
-	// 	try {
-	// 		const response = await fetch("/api/v1/auth/reset-password", {
-	// 			method: "POST",
-	// 			headers: {
-	// 				"Content-Type": "application/json",
-	// 			},
-	// 			body: JSON.stringify({ email }),
-	// 		});
-	// 		const data = await response.json();
-	// 		if (response.ok) {
-	// 			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-	// 			data?.message
-	// 				? toast.success("Reset link sent to you email", {
-	// 						duration: 4000,
-	// 				  }) && router.push("/login")
-	// 				: toast.error("An error occured, try again!", {
-	// 						duration: 4000,
-	// 				  });
-	// 		}
-	// 		toast.error(data.error, {
-	// 			duration: 4000,
-	// 		});
-	// 	} catch (error) {
-	// 		console.error("Error", error);
-	// 	}
-	// 	setIsLoading(false);
-	// };
+	const handleForgotPassword = async (
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
+		e.preventDefault();
+		setIsLoading(true);
+		try {
+			const response = await fetch("/api/auth/reset-password", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email }),
+			});
+			const data = await response.json();
+			if (response.ok) {
+				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+				data?.message
+					? toast.success("Reset link sent to you email", {
+							duration: 4000,
+					  }) && router.push("/login")
+					: toast.error("An error occured, try again!", {
+							duration: 4000,
+					  });
+			}
+			toast.error(data.error, {
+				duration: 4000,
+			});
+		} catch (error) {
+			console.error("Error", error);
+		}
+		setIsLoading(false);
+	};
 
 	return (
 		<section className="py-10 h-dvh sm:h-fit bg-gray-50 sm:py-16 md:h-dvh">
@@ -109,9 +109,9 @@ export default function ForgotPassword() {
 										<button
 											type="button"
 											disabled={!email || isLoading}
-											// onClick={(e: any) =>
-											// 	handleForgotPassword(e)
-											// }
+											onClick={(e: any) =>
+												handleForgotPassword(e)
+											}
 											className={`inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-orange-500 border border-transparent rounded-md focus:outline-none hover:bg-orange-700 focus:bg-orange-700 ${
 												!email
 													? "cursor-not-allowed"

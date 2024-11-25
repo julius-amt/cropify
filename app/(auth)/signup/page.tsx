@@ -5,7 +5,6 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SignupImage from "@/public/rb_2148889459.png";
-// import { FormData as _formData } from "@/app/_types/signup-data";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -28,36 +27,36 @@ const Signup = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // const handleSignUpWithCredentials = async () => {
-    // 	setIsLoading(true);
-    // 	try {
-    // 		const form = new FormData();
-    // 		form.append("username", formData.username);
-    // 		form.append("email", formData.email);
-    // 		form.append("phone", formData.telephone);
-    // 		form.append("password", formData.newPassword);
-    // 		form.append("re_password", formData.confirmPassword);
+    const handleSignUpWithCredentials = async () => {
+        setIsLoading(true);
+        try {
+            const form = new FormData();
+            form.append("username", formData.username);
+            form.append("email", formData.email);
+            form.append("phone", formData.telephone);
+            form.append("password", formData.newPassword);
+            form.append("re_password", formData.confirmPassword);
 
-    // 		const response = await fetch("/api/v1/auth/signup", {
-    // 			method: "POST",
-    // 			body: form,
-    // 		});
-    // 		const data = await response.json();
-    // 		if (response.ok) {
-    // 			if (data.success) {
-    // 				toast.success(data.message, { duration: 4000 });
-    // 				router.push("/login");
-    // 				setIsLoading(false);
-    // 				return;
-    // 			}
-    // 			toast.error(data.error, { duration: 4000 });
-    // 		}
-    // 		toast.error(data.error, { duration: 4000 });
-    // 	} catch (error: any) {
-    // 		throw new Error("Error", error);
-    // 	}
-    // 	setIsLoading(false);
-    // };
+            const response = await fetch("/api/auth/signup", {
+                method: "POST",
+                body: form,
+            });
+            const data = await response.json();
+            if (response.ok) {
+                if (data.success) {
+                    toast.success(data.message, { duration: 4000 });
+                    router.push("/login");
+                    setIsLoading(false);
+                    return;
+                }
+                toast.error(data.error, { duration: 4000 });
+            }
+            toast.error(data.error, { duration: 4000 });
+        } catch (error: any) {
+            throw new Error("Error", error);
+        }
+        setIsLoading(false);
+    };
 
     const disableBtn = () => {
         return (
@@ -197,7 +196,7 @@ const Signup = () => {
                                 <div className="space-y-5">
                                     <div>
                                         <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                                            <div className="absolute inset-y-0 left-0 flex items-ceorangenter pl-3 pointer-events-none">
+                                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
                                                     fill="none"
@@ -218,7 +217,7 @@ const Signup = () => {
                                                 type="text"
                                                 name="username"
                                                 onChange={handleInput}
-                                                placeholder="Full Name"
+                                                placeholder="Username"
                                                 className="block w-full py-4 pl-10 outline-none pr-4 text-black placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-lg bg-gray-50 caret-orange-500 focus:border-orange-500 focus:bg-white focus:ring-1 focus:ring-orange-500"
                                                 required
                                             />
@@ -445,9 +444,9 @@ const Signup = () => {
                                         <button
                                             type="submit"
                                             disabled={disableBtn() || isLoading}
-                                            // onClick={
-                                            // 	handleSignUpWithCredentials
-                                            // }
+                                            onClick={
+                                                handleSignUpWithCredentials
+                                            }
                                             className={`inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-orange-500 border border-transparent rounded-lg focus:bg-orange-700 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-700 ${
                                                 disableBtn()
                                                     ? "cursor-not-allowed"

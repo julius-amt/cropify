@@ -8,7 +8,6 @@ import Link from "next/link";
 import ChatIcon from "@/public/online-doctor-concept/3712074.jpg";
 import FarmImage from "@/public/side-view-women-taking-care-plants.jpg";
 import PlantScan from "@/public/smiley-woman-holding-tablet-full-shot.jpg";
-import { useEffect } from "react";
 
 const Home = () => {
     const { state } = useIndexContext();
