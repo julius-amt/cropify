@@ -55,7 +55,6 @@ export const POST = async (req: NextRequest) => {
                 expiresIn: "6d",
             }
         );
-        console.log("existingUser", existingUser);
 
         const response = NextResponse.json(
             { message: "Login successful", success: true },

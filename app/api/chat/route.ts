@@ -1,10 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse, NextRequest } from "next/server";
+import { authenticatedUser } from "../_lib/authenticateUser";
+import Chat from "../_models/chat";
 
 const { AMALIAI_BASE_URL, AMALIAI_KEY } = process.env;
 
 export const POST = async (request: NextRequest) => {
     try {
+        // Authenticate the user
+        const user = authenticatedUser(request);
+        if (!user) {
+            return NextResponse.json(
+                { error: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
         if (!AMALIAI_BASE_URL || !AMALIAI_KEY) {
             return NextResponse.json(
                 {
@@ -13,9 +24,6 @@ export const POST = async (request: NextRequest) => {
                 { status: 500 }
             );
         }
-        console.log(
-            `Amaliai base url: ${AMALIAI_BASE_URL} and Amali ai key : ${AMALIAI_KEY}`
-        );
 
         const { message } = await request.json();
 
@@ -35,12 +43,24 @@ export const POST = async (request: NextRequest) => {
             },
             body: JSON.stringify({ prompt: message, stream: false }),
         });
-        console.log("Message:", message);
 
         // Handle the response
         if (response.ok) {
-            const data = await response.json();
-            return NextResponse.json({ success: true, data }, { status: 201 });
+            let data = await response.json();
+            data = data.data;
+
+            // save record to database
+            const newChat = new Chat({
+                user: user._id,
+                aiResponse: data.content,
+                message,
+            });
+            await newChat.save();
+
+            return NextResponse.json(
+                { success: true, data: newChat },
+                { status: 201 }
+            );
         } else {
             const errorData = await response.json();
             return NextResponse.json(
@@ -48,6 +68,26 @@ export const POST = async (request: NextRequest) => {
                 { status: response.status }
             );
         }
+    } catch (error: unknown) {
+        return NextResponse.json({ error: error }, { status: 500 });
+    }
+};
+
+export const GET = async (request: NextRequest) => {
+    try {
+        // Authenticate the user
+        const user = authenticatedUser(request);
+        if (!user) {
+            return NextResponse.json(
+                { error: "Unauthorized" },
+                { status: 401 }
+            );
+        }
+
+        const chats = await Chat.find({ user: user._id }).sort({
+            createdAt: -1,
+        });
+        return NextResponse.json({ success: true, data: chats });
     } catch (error: unknown) {
         return NextResponse.json({ error: error }, { status: 500 });
     }
