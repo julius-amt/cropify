@@ -8,13 +8,13 @@ import { chatContext } from "@/src/content/ChatContent";
 import { useContext } from "react";
 export default function ChatPage() {
 
-    const  {getUserMessage, postMessage, fetchChat, chats} = useContext(chatContext)
+    const  {getUserMessage, postMessage, fetchChat, chats, sending, userMessage} = useContext(chatContext)
 
     const [prompt, setPrompt] = useState("");
 
     useEffect(()=>{
         fetchChat()
-        console.log("chat", chats)
+        console.log(sending)
     }, [])
     
     return (
@@ -167,7 +167,7 @@ export default function ChatPage() {
                 <div className="flex-1 overflow-y-auto p-6 space-y-6">
                     {
                         chats?.map((data, index) => {
-                            console.log("data", Object.values(data), index)
+                            console.log("data", chats)
                             return (
                                 <div key={index} className="flex flex-col space-y-6">
                                      <div className="flex space-x-4">
@@ -202,6 +202,26 @@ export default function ChatPage() {
                             )
                         })
                     }
+
+                {
+                    sending && (
+                        <div className="flex space-x-4">
+                         <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
+                            <span className="text-white font-semibold">C</span>
+                        </div>
+                        <div className="flex-1">
+                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                                <p className="text-gray-800">
+                                   {
+                                    userMessage
+                                   }
+                                                
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    )
+                }
                    
                 </div>
 
