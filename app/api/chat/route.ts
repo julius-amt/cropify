@@ -38,6 +38,16 @@ export const POST = async (request: NextRequest) => {
             );
         }
 
+        // Define a strict agriculture-specific instruction for the AI model
+        const agricultureContext = `
+            You are an AI assistant designed exclusively for farmers. 
+            You will only respond to queries and provide information related to agriculture, farming practices, crops, soil management, pests, irrigation, and related topics. 
+            Do not answer any question that is not directly related to agriculture.
+        `;
+
+        // Append the user message to the agriculture context
+        const prompt = `${agricultureContext}\n\nUser's Query: ${message}`;
+
         // Make the fetch request
         const response = await fetch(`${AMALIAI_BASE_URL}/public/chat`, {
             method: "POST",
@@ -45,7 +55,7 @@ export const POST = async (request: NextRequest) => {
                 "Content-Type": "application/json",
                 "X-API-KEY": `${AMALIAI_KEY}`,
             },
-            body: JSON.stringify({ prompt: message, stream: false }),
+            body: JSON.stringify({ prompt, stream: false }),
         });
 
         // Handle the response
@@ -53,7 +63,7 @@ export const POST = async (request: NextRequest) => {
             let data = await response.json();
             data = data.data;
 
-            // save record to database
+            // Save record to database
             const newChat = new Chat({
                 user: user.id,
                 aiResponse: data.content,
