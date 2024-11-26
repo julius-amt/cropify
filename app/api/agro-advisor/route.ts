@@ -8,7 +8,7 @@ export const POST = async (request: NextRequest) => {
     try {
         const user = authenticatedUser(request);
         if (!user) {
-            return NextResponse.json(
+            return NextResponse.json(!
                 { error: "Unauthorized" },
                 { status: 401 }
             );

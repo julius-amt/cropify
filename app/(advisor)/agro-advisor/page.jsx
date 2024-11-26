@@ -4,8 +4,12 @@ import { useState } from "react";
 import PlantIcon from "@/public/plant.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { advisorContext } from "@/src/content/AdvisorContext";
 
 export default function AgroAdvisorPage() {
+    const {fieldValuesChange, feildsValues, postAdvisorDetails} = useContext(advisorContext)
+    
     const [formData, setFormData] = useState({
         crop: "",
         soilType: "",
@@ -142,6 +146,10 @@ export default function AgroAdvisorPage() {
                     Agro-Advisor Form
                 </h1>
 
+                <div>
+                    
+                </div>
+
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex w-full space-x-3 ">
                         <div className="space-y-2 w-full">
@@ -151,8 +159,8 @@ export default function AgroAdvisorPage() {
                             <input
                                 type="text"
                                 name="crop"
-                                value={formData.crop}
-                                onChange={handleChange}
+                                value={feildsValues.crop}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter crop name"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
@@ -164,8 +172,8 @@ export default function AgroAdvisorPage() {
                             </label>
                             <select
                                 name="soilType"
-                                value={formData.soilType}
-                                onChange={handleChange}
+                                value={feildsValues.soilType}
+                                onChange={fieldValuesChange}
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             >
                                 <option value="">Select soil type</option>
@@ -179,13 +187,13 @@ export default function AgroAdvisorPage() {
                     <div className="flex w-full space-x-3 ">
                         <div className="space-y-2 w-full">
                             <label className="block text-sm font-medium text-gray-700">
-                                Soil pH
+                                Crop stage
                             </label>
                             <input
                                 type="text"
-                                name="soilPh"
-                                value={formData.soilPh}
-                                onChange={handleChange}
+                                name="cropStage"
+                                value={feildsValues.cropStage}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter soil pH value"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
@@ -193,13 +201,13 @@ export default function AgroAdvisorPage() {
 
                         <div className="space-y-2 w-full">
                             <label className="block text-sm font-medium text-gray-700">
-                                Pest
+                                key weeds
                             </label>
                             <input
                                 type="text"
-                                name="pest"
-                                value={formData.pest}
-                                onChange={handleChange}
+                                name="keyWeeds"
+                                value={feildsValues.pest}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter pest name"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
@@ -209,26 +217,26 @@ export default function AgroAdvisorPage() {
                     <div className="w-full flex space-x-3">
                         <div className="space-y-2 w-full">
                             <label className="block text-sm font-medium text-gray-700">
-                                Disease
+                                SoilPH
                             </label>
                             <input
                                 type="text"
-                                name="disease"
-                                value={formData.disease}
-                                onChange={handleChange}
+                                name="soilPH"
+                                value={feildsValues.soilPH}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter disease name"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
                         <div className="space-y-2 w-full">
                             <label className="block text-sm font-medium text-gray-700">
-                                Disease
+                                Soil fertility
                             </label>
                             <input
                                 type="text"
-                                name="disease"
-                                value={formData.disease}
-                                onChange={handleChange}
+                                name="soilFertility"
+                                value={feildsValues.soilFertility}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter disease name"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
@@ -238,13 +246,13 @@ export default function AgroAdvisorPage() {
                     <div className="w-full flex space-x-3">
                         <div className="space-y-2 w-full">
                             <label className="block text-sm font-medium text-gray-700">
-                                Disease
+                            Soil moisture
                             </label>
                             <input
                                 type="text"
-                                name="disease"
-                                value={formData.disease}
-                                onChange={handleChange}
+                                name="soilMoisture"
+                                value={feildsValues.soilMoisture}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter disease name"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
@@ -257,16 +265,38 @@ export default function AgroAdvisorPage() {
                             <input
                                 type="text"
                                 name="disease"
-                                value={formData.disease}
-                                onChange={handleChange}
+                                value={feildsValues.disease}
+                                onChange={fieldValuesChange}
                                 placeholder="Enter disease name"
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
                     </div>
 
+                    <div className="w-full flex space-x-3">
+                        <div className="space-y-2 w-full">
+                            <label className="block text-sm font-medium text-gray-700">
+                                Pests
+                            </label>
+                            <input
+                                type="text"
+                                name="pests"
+                                value={feildsValues.pests}
+                                onChange={fieldValuesChange}
+                                placeholder="Enter disease name"
+                                className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                            />
+                        </div>
+
+                        <div className="space-y-2 w-full">
+                           
+                        </div>
+                    </div>
+
+
                     <button
                         type="submit"
+                        onClick={(e)=>postAdvisorDetails()}
                         className="w-full bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
                     >
                         Submit
