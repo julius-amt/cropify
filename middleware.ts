@@ -4,7 +4,6 @@ export async function middleware(req: NextRequest) {
     const pathname = req.nextUrl.pathname;
 
     const isAuth = req.cookies.get("token");
-    console.log(`isAuth: ${isAuth}`);
 
     const sensitiveRoutes = [
         "/chat",

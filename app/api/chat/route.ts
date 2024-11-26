@@ -53,7 +53,6 @@ export const POST = async (request: NextRequest) => {
             let data = await response.json();
             data = data.data;
 
-            console.log(user);
             // save record to database
             const newChat = new Chat({
                 user: user.id,
@@ -88,9 +87,7 @@ export const GET = async (request: NextRequest) => {
                 { status: 401 }
             );
         }
-        console.log(user);
         const userId = new mongoose.Types.ObjectId(user.id);
-        console.log(userId);
         const chats = await Chat.find({
             user: userId,
         }).sort({
