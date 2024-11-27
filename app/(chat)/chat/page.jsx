@@ -45,7 +45,7 @@ export default function ChatPage() {
                         </a>
                     </div>
 
-                    <button className="w-full font-bold bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200  transition-colors">
+                    <button className="w-full font-bold bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200  transition-colors">
                         + New Chat
                     </button>
 
@@ -105,12 +105,12 @@ export default function ChatPage() {
 
                 <div className="flex items-center flex-col space-y-3 ">
                     <Link href="/agro-scan" className="w-[80%]">
-                        <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">
+                        <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200">
                             AgroScan
                         </button>
                     </Link>
                     <Link href="/agro-advisor" className="w-[80%]">
-                        <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
+                        <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
                             AgroAdvisor
                         </button>
                     </Link>
@@ -134,7 +134,7 @@ export default function ChatPage() {
             <div className="flex-1 flex flex-col">
                 {/* Chat Header */}
                 <div className="h-16 border-b bg-white flex items-center justify-between">
-                    <h1 className="font-semibold text-lg">Agro-Assist</h1>
+                    <h1 className="font-semibold text-lg ml-5">Agro-Assist</h1>
                     <div className="flex items-center space-x-4">
                         <button className="p-2 hover:bg-gray-100 rounded-full">
                             <svg
@@ -238,7 +238,7 @@ export default function ChatPage() {
                             // onChange={(e) => setPrompt(e.target.value)}
                             onChange={getUserMessage}
                             placeholder="Enter a prompt here..."
-                            className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-indigo-500"
+                            className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-green-500"
                         />
                         <button
                             className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600"
