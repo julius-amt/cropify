@@ -47,6 +47,34 @@ export default function AgroAdvisorPage() {
         return Object.values(feildsValues).includes("");
     };
 
+    // make a request to get user information
+    const [isLoadingUserData, setIsLoadingUserData] = useState(false);
+    const [userData, setUserData] = useState(null);
+
+    const getUserInfo = async () => {
+        setIsLoadingUserData(true);
+        try {
+            const response = await fetch("/api/auth/users/me", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setUserData(data);
+            } else {
+                setUserData("Mr. User");
+            }
+        } catch (error) {}
+        setIsLoadingUserData(false);
+    };
+
+    useEffect(() => {
+        getUserInfo();
+    }, []);
+
     return (
         <div className="h-screen flex bg-gray-50 ">
             {/* Sidebar */}
@@ -91,9 +119,12 @@ export default function AgroAdvisorPage() {
                     <div className="flex items-center space-x-3 flex-grow">
                         <div className="w-8 h-8 rounded-full bg-gray-200"></div>
                         <div className="flex-1">
-                            <div className="font-medium">User Name</div>
-                            <div className="text-sm text-gray-500">
-                                Pro Plan
+                            <div className="font-medium">
+                                {isLoadingUserData ? (
+                                    <div className="w-16 h-4 bg-gray-200"></div>
+                                ) : (
+                                    userData?.username
+                                )}
                             </div>
                         </div>
                     </div>

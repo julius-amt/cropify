@@ -67,15 +67,6 @@ export const AdvisorContextProvider = ({ children }) => {
                     getWeather();
                 })
                 .then((res) => {});
-            console.log("mamam");
-
-            // Return only latitude and longitude
-            //   return {
-            //     latitude: position.coords.latitude,
-            //     longitude: position.coords.longitude
-            //   };
-
-            console.log(location);
         } catch (error) {
             console.log("Error getting location:", error.message);
             return null;
@@ -83,9 +74,6 @@ export const AdvisorContextProvider = ({ children }) => {
     }
 
     const getWeather = async () => {
-        console.log(" lo", location.lon, "lat", location.lat);
-        console.log("yaw");
-
         try {
             if (location.lat && location.lon) {
                 const response = await fetch(
@@ -99,10 +87,8 @@ export const AdvisorContextProvider = ({ children }) => {
                 );
 
                 if (response.ok) {
-                    console.log("ok");
                     const data = await response.json();
 
-                    console.log(" wetther", data.data);
                     setWeatherValues({
                         ...weatherValues,
                         name: data?.data?.location?.name,
@@ -113,11 +99,10 @@ export const AdvisorContextProvider = ({ children }) => {
                         humidity: data?.data?.current?.humidity,
                         wind: data?.data?.current?.wind_kph,
                     });
-                    console.log(weatherValues);
                 }
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
