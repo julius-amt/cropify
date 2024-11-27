@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
+import Weather from "@/app/_components/weather/Weather"
 
 export default function ChatPage() {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -138,52 +139,8 @@ export default function ChatPage() {
                 </div>
 
                 {/* Chat List */}
-                <div className="flex-1 overflow-y-auto">
-                    <div className="p-2">
-                        <div className="space-y-1">
-                            {["Folder", "Favorite", "Archive"].map(
-                                (item, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-                                    >
-                                        <svg
-                                            className="w-5 h-5 text-gray-500"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                                            />
-                                        </svg>
-                                        <span className="text-gray-700">
-                                            {item}
-                                        </span>
-                                        <span className="ml-auto text-gray-400 text-sm">
-                                            8
-                                        </span>
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex items-center flex-col space-y-3">
-                    <Link href="/chat" className="w-[80%]">
-                        <button className="w-full bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
-                            AgroAssist
-                        </button>
-                    </Link>
-                    <Link href="/agro-advisor" className="w-[80%]">
-                        <button className="w-full bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
-                            AgroAdvisor
-                        </button>
-                    </Link>
+                <div className="flex-1 overflow-y-auto flex justify-center items-center">
+                     <Weather/>
                 </div>
 
                 {/* User Profile */}

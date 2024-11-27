@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "../../app/globals.css";
 
+
 import { AdvisorContextProvider } from "@/app/_components/_content/AdvisorContext";
 
 // archivo font

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
+
 import { ChatContextProvider } from "@/app/_components/_content/ChatContent";
+
 
 export const metadata: Metadata = {
     title: "Create Next App",
