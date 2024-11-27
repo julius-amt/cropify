@@ -6,6 +6,9 @@ import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
 import { chatContext } from "@/src/content/ChatContent";
 import { useContext } from "react";
+
+import Weather from "@/src/weather/Weather";
+
 export default function ChatPage() {
 
     const  {getUserMessage, postMessage, fetchChat, chats, sending, userMessage} = useContext(chatContext)
@@ -62,41 +65,9 @@ export default function ChatPage() {
                 </div>
 
                 {/* Chat List */}
-                <div className="flex-1 overflow-y-auto">
-                    <div className="p-2">
-                        <div className="space-y-1">
-                            {["Folder", "Favorite", "Archive"].map(
-                                (item, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center space-x-2 px-3 py-2 hover:bg-green-400 rounded-lg cursor-pointer hover:text-white"
-                                    >
-                                        <svg
-                                            className="w-5 h-5 text-gray-500 hover:text-white"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                                            />
-                                        </svg>
-                                        <span className="">
-                                            {item}
-                                        </span>
-                                        <span className="ml-auto ">
-                                            8
-                                        </span>
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
+                <div className="flex-1 overflow-y-auto flex justify-center items-center">
+                     <Weather/>
                 </div>
-
                 <div className="flex items-center flex-col space-y-3 ">
                   <Link href="/agro-scan" className="w-[80%]">
                     <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">

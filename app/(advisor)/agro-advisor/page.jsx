@@ -1,14 +1,25 @@
 "use client";
 // pages/chat.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlantIcon from "@/public/plant.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { advisorContext } from "@/src/content/AdvisorContext";
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import CircularProgress from '@mui/material/CircularProgress';
+import Weather from "@/src/weather/Weather"
 
 export default function AgroAdvisorPage() {
-    const {fieldValuesChange, feildsValues, postAdvisorDetails} = useContext(advisorContext)
+    const {fieldValuesChange, 
+            feildsValues, 
+            postAdvisorDetails, 
+            aiResponse, 
+            showResponse,
+            loading,
+            getLocation} = useContext(advisorContext)
     
     const [formData, setFormData] = useState({
         crop: "",
@@ -31,6 +42,14 @@ export default function AgroAdvisorPage() {
         console.log("Form submitted:", formData);
         // Add form submission logic here
     };
+
+    useEffect(()=>{
+        getLocation()
+    },[])
+
+    const disableBtn = ()=>{
+        return Object.values(feildsValues).includes("")
+    }
 
     return (
         <div className="h-screen flex bg-gray-50 ">
@@ -77,39 +96,8 @@ export default function AgroAdvisorPage() {
                 </div>
 
                 {/* Chat List */}
-                <div className="flex-1 overflow-y-auto">
-                    <div className="p-2">
-                        <div className="space-y-1">
-                            {["Folder", "Favorite", "Archive"].map(
-                                (item, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center space-x-2 px-3 py-2 hover:bg-gray-100 rounded-lg cursor-pointer"
-                                    >
-                                        <svg
-                                            className="w-5 h-5 text-gray-500"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth="2"
-                                                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                                            />
-                                        </svg>
-                                        <span className="text-gray-700">
-                                            {item}
-                                        </span>
-                                        <span className="ml-auto text-gray-400 text-sm">
-                                            8
-                                        </span>
-                                    </div>
-                                )
-                            )}
-                        </div>
-                    </div>
+                <div className="flex-1 overflow-y-auto flex justify-center items-center">
+                     <Weather/>
                 </div>
 
                 {/* Sidebar Buttons */}
@@ -142,7 +130,31 @@ export default function AgroAdvisorPage() {
 
             {/* Main Form Area */}
             <div className="flex-1 flex flex-col p-6">
-                <h1 className="text-2xl font-semibold mb-6">
+                {
+                    showResponse ? (
+                        <div className="bg-white p-4 rounded-lg shadow-sm">
+                        <ReactMarkdown
+                            components={{
+                                code({ inline, className, children, ...props }) {
+                                const match = /language-(\w+)/.exec(className || '');
+                                return !inline && match ? (
+                                    <SyntaxHighlighter style={darcula} language={match[1]} {...props}>
+                                    {String(children).replace(/\n$/, '')}
+                                    </SyntaxHighlighter>
+                                ) : (
+                                    <code className={className} {...props}>
+                                    {children}
+                                    </code>
+                                );
+                                },
+                            }}
+                            >
+                            {true && aiResponse}
+                        </ReactMarkdown>
+                    </div>
+                    ): (
+                        <div>
+                             <h1 className="text-2xl font-semibold mb-6">
                     Agro-Advisor Form
                 </h1>
 
@@ -297,11 +309,20 @@ export default function AgroAdvisorPage() {
                     <button
                         type="submit"
                         onClick={(e)=>postAdvisorDetails()}
+                        disabled={disableBtn()}
                         className="w-full bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
+                        style={{cursor: disableBtn ? "not-allowed" : ""}}
                     >
-                        Submit
+                        {
+                            loading ?( <CircularProgress color="inherit" size={20} />):"Submit"
+                        }
                     </button>
                 </form>
+                        </div>
+                    )
+                }
+                
+               
             </div>
         </div>
     );
