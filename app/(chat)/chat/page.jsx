@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
-import { chatContext } from "@/app/_content/ChatContent";
+import { chatContext } from "@/app/_components/_content/ChatContent";
 import { useContext } from "react";
 import MarkdownRenderer from "@/app/_components/MarkDownRenderer";
-
+import LogoutButton from "@/app/_components/LogoutButton";
 
 export default function ChatPage() {
     const {
@@ -19,7 +19,6 @@ export default function ChatPage() {
         sending,
         userMessage,
     } = useContext(chatContext);
-    
 
     const [prompt, setPrompt] = useState("");
 
@@ -45,11 +44,11 @@ export default function ChatPage() {
                         </a>
                     </div>
 
-                    <button className="w-full font-bold bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200  transition-colors">
+                    {/* <button className="w-full font-bold bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200  transition-colors">
                         + New Chat
-                    </button>
+                    </button> */}
 
-                    <div className="mt-4 relative">
+                    {/* <div className="mt-4 relative">
                         <input
                             type="text"
                             placeholder="Search"
@@ -68,12 +67,12 @@ export default function ChatPage() {
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                             />
                         </svg>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Chat List */}
                 <div className="flex-1 overflow-y-auto">
-                    <div className="p-2">
+                    {/* <div className="p-2">
                         <div className="space-y-1">
                             {["Folder", "Favorite", "Archive"].map(
                                 (item, index) => (
@@ -100,12 +99,16 @@ export default function ChatPage() {
                                 )
                             )}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="flex items-center flex-col space-y-3 ">
-                    <Link href="/agro-scan" className="w-[80%]">
-                        <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200">
+                    <Link
+                        href="#"
+                        className="w-[80%]"
+                        title="Feature will arrive in future version"
+                    >
+                        <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200 cursor-not-allowed">
                             AgroScan
                         </button>
                     </Link>
@@ -117,8 +120,8 @@ export default function ChatPage() {
                 </div>
 
                 {/* User Profile */}
-                <div className="p-4 border-t">
-                    <div className="flex items-center space-x-3">
+                <div className="p-4 border-t flex">
+                    <div className="flex items-center space-x-3 flex-grow">
                         <div className="w-8 h-8 rounded-full bg-gray-200"></div>
                         <div className="flex-1">
                             <div className="font-medium">User Name</div>
@@ -127,6 +130,7 @@ export default function ChatPage() {
                             </div>
                         </div>
                     </div>
+                    <LogoutButton />
                 </div>
             </div>
 
@@ -136,7 +140,7 @@ export default function ChatPage() {
                 <div className="h-16 border-b bg-white flex items-center justify-between">
                     <h1 className="font-semibold text-lg ml-5">Agro-Assist</h1>
                     <div className="flex items-center space-x-4">
-                        <button className="p-2 hover:bg-gray-100 rounded-full">
+                        {/* <button className="p-2 hover:bg-gray-100 rounded-full">
                             <svg
                                 className="w-5 h-5"
                                 fill="none"
@@ -165,51 +169,61 @@ export default function ChatPage() {
                                     d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                                 />
                             </svg>
-                        </button>
+                        </button> */}
                     </div>
                 </div>
 
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                    {!chats ? <h3 className="text-gray-700 font-medium text-2xl">Loading...</h3> : chats?.map((data, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className="flex flex-col space-y-6"
-                            >
-                                <div className="flex space-x-4">
-                                    <div className="flex-1 ml-[40%]">
-                                        <div className="bg-white p-4 rounded-lg shadow-sm">
-                                            <p className="text-gray-800">
-                                                {data?.message}
-                                                {/* Write a 100-character meta description for
+                    {!chats ? (
+                        <h3 className="text-gray-700 font-medium text-2xl">
+                            Loading...
+                        </h3>
+                    ) : (
+                        chats?.map((data, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className="flex flex-col space-y-6"
+                                >
+                                    <div className="flex space-x-4">
+                                        <div className="flex-1 ml-[40%]">
+                                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                                                <p className="text-gray-800">
+                                                    {data?.message}
+                                                    {/* Write a 100-character meta description for
                                                     my blog post about digital marketing. */}
-                                            </p>
+                                                </p>
+                                            </div>
                                         </div>
+                                        {/* <div className="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0"></div> */}
                                     </div>
-                                    {/* <div className="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0"></div> */}
-                                </div>
 
-                                <div className="flex space-x-4">
-                                    <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
-                                        <span className="text-white font-semibold">
-                                            C
-                                        </span>
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="bg-white p-4 rounded-lg shadow-sm">
-                                            <p className="text-gray-800">
-                                                {/* Master the art of digital marketing with
+                                    <div className="flex space-x-4">
+                                        <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
+                                            <span className="text-white font-semibold">
+                                                C
+                                            </span>
+                                        </div>
+                                        <div className="flex-1">
+                                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                                                <p className="text-gray-800">
+                                                    {/* Master the art of digital marketing with
                                                     expert strategies for online success. Unlock
                                                     growth now! */}
-                                                <MarkdownRenderer content={data?.aiResponse} />
-                                            </p>
+                                                    <MarkdownRenderer
+                                                        content={
+                                                            data?.aiResponse
+                                                        }
+                                                    />
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })
+                    )}
 
                     {sending && (
                         <div className="flex space-x-4 ml-[40%]">

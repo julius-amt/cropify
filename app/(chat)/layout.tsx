@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../../app/globals.css";
-import { ChatContextProvider } from "@/app/_content/ChatContent";
+import { ChatContextProvider } from "@/app/_components/_content/ChatContent";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -12,9 +12,5 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return (
-       <ChatContextProvider>
-        {children}
-       </ChatContextProvider>
-    );
+    return <ChatContextProvider>{children}</ChatContextProvider>;
 }
