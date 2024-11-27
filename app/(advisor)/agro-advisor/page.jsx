@@ -6,7 +6,7 @@ import PlantIcon from "@/public/plant.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { advisorContext } from "@/app/_components/content/AdvisorContext";
+import { advisorContext } from "@/app/_components/_content/AdvisorContext";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -32,14 +32,6 @@ export default function AgroAdvisorPage() {
         pest: "",
         disease: "",
     });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -158,23 +150,23 @@ export default function AgroAdvisorPage() {
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="flex w-full space-x-3 ">
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Crop
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="crop"
                                         value={feildsValues.crop}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter crop name"
+                                        placeholder="Crop name"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
 
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Soil Type
-                                    </label>
+                                    </label> */}
                                     <select
                                         name="soilType"
                                         value={feildsValues.soilType}
@@ -182,7 +174,7 @@ export default function AgroAdvisorPage() {
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     >
                                         <option value="">
-                                            Select soil type
+                                            Select Soil Type
                                         </option>
                                         <option value="clay">Clay</option>
                                         <option value="sandy">Sandy</option>
@@ -193,29 +185,29 @@ export default function AgroAdvisorPage() {
 
                             <div className="flex w-full space-x-3 ">
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Crop stage
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="cropStage"
                                         value={feildsValues.cropStage}
                                         onChange={fieldValuesChange}
-                                        placeholder=""
+                                        placeholder="Crop Stage"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
 
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         key weeds
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="keyWeeds"
                                         value={feildsValues.pest}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter pest name"
+                                        placeholder="Key Weeds"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
@@ -223,28 +215,28 @@ export default function AgroAdvisorPage() {
 
                             <div className="w-full flex space-x-3">
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         SoilPH
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="soilPH"
                                         value={feildsValues.soilPH}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter disease name"
+                                        placeholder="Soin PH value"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Soil fertility
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="soilFertility"
                                         value={feildsValues.soilFertility}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter disease name"
+                                        placeholder="Soil fertility"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
@@ -252,29 +244,29 @@ export default function AgroAdvisorPage() {
 
                             <div className="w-full flex space-x-3">
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Soil moisture
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="soilMoisture"
                                         value={feildsValues.soilMoisture}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter disease name"
+                                        placeholder="Soil moisture"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
 
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Disease
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="disease"
                                         value={feildsValues.disease}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter disease name"
+                                        placeholder="Disease"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
@@ -282,15 +274,15 @@ export default function AgroAdvisorPage() {
 
                             <div className="w-full flex space-x-3">
                                 <div className="space-y-2 w-full">
-                                    <label className="block text-sm font-medium text-gray-700">
+                                    {/* <label className="block text-sm font-medium text-gray-700">
                                         Pests
-                                    </label>
+                                    </label> */}
                                     <input
                                         type="text"
                                         name="pests"
                                         value={feildsValues.pests}
                                         onChange={fieldValuesChange}
-                                        placeholder="Enter disease name"
+                                        placeholder="Pests"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                 </div>
@@ -298,24 +290,26 @@ export default function AgroAdvisorPage() {
                                 <div className="space-y-2 w-full"></div>
                             </div>
 
-                            <button
-                                type="submit"
-                                onClick={(e) => postAdvisorDetails()}
-                                disabled={disableBtn()}
-                                className="w-full bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
-                                style={{
-                                    cursor: disableBtn ? "not-allowed" : "",
-                                }}
-                            >
-                                {loading ? (
-                                    <CircularProgress
-                                        color="inherit"
-                                        size={20}
-                                    />
-                                ) : (
-                                    "Submit"
-                                )}
-                            </button>
+                            <div className="w-full flex items-center justify-center">
+                                <button
+                                    type="submit"
+                                    onClick={(e) => postAdvisorDetails()}
+                                    disabled={disableBtn()}
+                                    className="w-48 bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
+                                    style={{
+                                        cursor: disableBtn ? "not-allowed" : "",
+                                    }}
+                                >
+                                    {loading ? (
+                                        <CircularProgress
+                                            color="inherit"
+                                            size={20}
+                                        />
+                                    ) : (
+                                        "Submit"
+                                    )}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 )}
