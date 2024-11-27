@@ -5,12 +5,12 @@ import PlantIcon from "@/public/plant.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { advisorContext } from "@/src/content/AdvisorContext";
+import { advisorContext } from "@/app/_components/content/AdvisorContext";
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import CircularProgress from '@mui/material/CircularProgress';
-import Weather from "@/src/weather/Weather"
+import Weather from "@/app/_components/weather/Weather"
 
 export default function AgroAdvisorPage() {
     const {fieldValuesChange, 

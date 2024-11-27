@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
-import { chatContext } from "@/src/content/ChatContent";
+import { chatContext } from "@/app/_components/content/ChatContent";
 import { useContext } from "react";
 
-import Weather from "@/src/weather/Weather";
+import Weather from "@/app/_components/weather/Weather";
 
 export default function ChatPage() {
 

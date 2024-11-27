@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
-import Weather from "@/src/weather/Weather"
+import Weather from "@/app/_components/weather/Weather"
 
 export default function ChatPage() {
     const [selectedImage, setSelectedImage] = useState(null);

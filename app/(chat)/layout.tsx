@@ -3,7 +3,7 @@ import { Archivo } from "next/font/google";
 import "../../app/globals.css";
 import { IndexContextProvider } from "@/app/_context/index";
 import { Toaster } from "react-hot-toast";
-import { ChatContextProvider } from "@/src/content/ChatContent";
+import { ChatContextProvider } from "@/app/_components/content/ChatContent";
 
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
