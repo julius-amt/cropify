@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.markdown-content {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+  
+  .markdown-content h1, 
+  .markdown-content h2, 
+  .markdown-content h3 {
+    color: #333;
+  }
+  
+  .markdown-content p {
+    margin: 0.5em 0;
+  }
+  
+  .markdown-content ul {
+    padding-left: 20px;
+  }
+  
+  .markdown-content li {
+    margin-bottom: 0.5em;
+  }
+  
+  .markdown-content strong {
+    font-weight: bold;
+  }

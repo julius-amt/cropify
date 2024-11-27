@@ -5,7 +5,7 @@ import PlantIcon from "@/public/plant.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
-import { advisorContext } from "@/src/content/AdvisorContext";
+import { advisorContext } from "@/app/_content/AdvisorContext";
 
 export default function AgroAdvisorPage() {
     const {fieldValuesChange, feildsValues, postAdvisorDetails} = useContext(advisorContext)

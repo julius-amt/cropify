@@ -1,28 +1,38 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 // pages/chat.tsx
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
-import { chatContext } from "@/src/content/ChatContent";
+import { chatContext } from "@/app/_content/ChatContent";
 import { useContext } from "react";
-export default function ChatPage() {
+import MarkdownRenderer from "@/app/_components/MarkDownRenderer";
 
-    const  {getUserMessage, postMessage, fetchChat, chats, sending, userMessage} = useContext(chatContext)
+
+export default function ChatPage() {
+    const {
+        getUserMessage,
+        postMessage,
+        fetchChat,
+        chats,
+        sending,
+        userMessage,
+    } = useContext(chatContext);
+    
 
     const [prompt, setPrompt] = useState("");
 
-    useEffect(()=>{
-        fetchChat()
-        console.log(sending)
-    }, [])
-    
+    useEffect(() => {
+        fetchChat();
+    }, []);
+
     return (
         <div className="h-screen flex bg-gray-50">
             {/* Sidebar */}
             <div className="w-80 bg-white border-r flex flex-col h-full">
                 <div className="p-4 border-b">
-                <div className="flex-shrink-0 py-5">
+                    <div className="flex-shrink-0 py-5">
                         <a href="#" title="" className="flex gap-2">
                             <Image
                                 className="w-auto h-8"
@@ -43,7 +53,7 @@ export default function ChatPage() {
                         <input
                             type="text"
                             placeholder="Search"
-                            className="w-full pl-8 pr-4 py-2 border rounded-lg focus:outline-none focus:border-indigo-500"
+                            className="w-full pl-8 pr-4 py-2 border rounded-lg focus:outline-none focus:border-orange-500"
                         />
                         <svg
                             className="w-4 h-4 absolute left-2.5 top-3 text-gray-400"
@@ -84,12 +94,8 @@ export default function ChatPage() {
                                                 d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
                                             />
                                         </svg>
-                                        <span className="">
-                                            {item}
-                                        </span>
-                                        <span className="ml-auto ">
-                                            8
-                                        </span>
+                                        <span className="">{item}</span>
+                                        <span className="ml-auto ">8</span>
                                     </div>
                                 )
                             )}
@@ -98,16 +104,16 @@ export default function ChatPage() {
                 </div>
 
                 <div className="flex items-center flex-col space-y-3 ">
-                  <Link href="/agro-scan" className="w-[80%]">
-                    <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">
-                        AgroScan
-                    </button>
-                  </Link>
-                  <Link href="/agro-advisor" className="w-[80%]">
-                    <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
-                        AgroAdvisor
-                    </button>
-                  </Link>
+                    <Link href="/agro-scan" className="w-[80%]">
+                        <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">
+                            AgroScan
+                        </button>
+                    </Link>
+                    <Link href="/agro-advisor" className="w-[80%]">
+                        <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
+                            AgroAdvisor
+                        </button>
+                    </Link>
                 </div>
 
                 {/* User Profile */}
@@ -127,7 +133,7 @@ export default function ChatPage() {
             {/* Main Chat Area */}
             <div className="flex-1 flex flex-col">
                 {/* Chat Header */}
-                <div className="h-16 border-b bg-white flex items-center justify-between px-6">
+                <div className="h-16 border-b bg-white flex items-center justify-between">
                     <h1 className="font-semibold text-lg">Agro-Assist</h1>
                     <div className="flex items-center space-x-4">
                         <button className="p-2 hover:bg-gray-100 rounded-full">
@@ -165,64 +171,62 @@ export default function ChatPage() {
 
                 {/* Messages */}
                 <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                    {
-                        chats?.map((data, index) => {
-                            console.log("data", chats)
-                            return (
-                                <div key={index} className="flex flex-col space-y-6">
-                                     <div className="flex space-x-4">
-                                        <div className="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0"></div>
-                                        <div className="flex-1">
-                                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                                                <p className="text-gray-800">
-                                                    {data?.message}
-                                                    {/* Write a 100-character meta description for
+                    {!chats ? <h3 className="text-gray-700 font-medium text-2xl">Loading...</h3> : chats?.map((data, index) => {
+                        return (
+                            <div
+                                key={index}
+                                className="flex flex-col space-y-6"
+                            >
+                                <div className="flex space-x-4">
+                                    <div className="flex-1 ml-[40%]">
+                                        <div className="bg-white p-4 rounded-lg shadow-sm">
+                                            <p className="text-gray-800">
+                                                {data?.message}
+                                                {/* Write a 100-character meta description for
                                                     my blog post about digital marketing. */}
-                                                </p>
-                                            </div>
+                                            </p>
                                         </div>
                                     </div>
+                                    {/* <div className="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0"></div> */}
+                                </div>
 
-                                    <div className="flex space-x-4">
-                                        <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
-                                            <span className="text-white font-semibold">C</span>
-                                        </div>
-                                        <div className="flex-1">
-                                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                                                <p className="text-gray-800">
-                                                    {/* Master the art of digital marketing with
+                                <div className="flex space-x-4">
+                                    <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
+                                        <span className="text-white font-semibold">
+                                            C
+                                        </span>
+                                    </div>
+                                    <div className="flex-1">
+                                        <div className="bg-white p-4 rounded-lg shadow-sm">
+                                            <p className="text-gray-800">
+                                                {/* Master the art of digital marketing with
                                                     expert strategies for online success. Unlock
                                                     growth now! */}
-                                                    {data?.aiResponse}
-                                                </p>
-                                            </div>
+                                                <MarkdownRenderer content={data?.aiResponse} />
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                            )
-                        })
-                    }
+                            </div>
+                        );
+                    })}
 
-                {
-                    sending && (
-                        <div className="flex space-x-4">
-                         <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
-                            <span className="text-white font-semibold">C</span>
-                        </div>
-                        <div className="flex-1">
-                            <div className="bg-white p-4 rounded-lg shadow-sm">
-                                <p className="text-gray-800">
-                                   {
-                                    userMessage
-                                   }
-                                                
-                                </p>
+                    {sending && (
+                        <div className="flex space-x-4 ml-[40%]">
+                            {/* <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
+                                <span className="text-white font-semibold">
+                                    C
+                                </span>
+                            </div> */}
+                            <div className="flex-1">
+                                <div className="bg-white p-4 rounded-lg shadow-sm">
+                                    <p className="text-gray-800">
+                                        {userMessage}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    )
-                }
-                   
+                    )}
                 </div>
 
                 {/* Input Area */}
@@ -236,8 +240,9 @@ export default function ChatPage() {
                             placeholder="Enter a prompt here..."
                             className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-indigo-500"
                         />
-                        <button className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600"
-                            onClick={()=>postMessage()}
+                        <button
+                            className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600"
+                            onClick={() => postMessage()}
                         >
                             <svg
                                 className="w-5 h-5"

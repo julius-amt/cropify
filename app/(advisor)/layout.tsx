@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "../../app/globals.css";
 
-import {AdvisorContextProvider} from "@/src/content/AdvisorContext"
+import {AdvisorContextProvider} from "@/app/_content/AdvisorContext"
 
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
