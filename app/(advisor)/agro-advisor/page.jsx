@@ -11,6 +11,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import CircularProgress from '@mui/material/CircularProgress';
 import Weather from "@/app/_components/weather/Weather"
+import LogoutButton from "@/app/_components/LogoutButton";
+
 
 export default function AgroAdvisorPage() {
     const {fieldValuesChange, 
@@ -20,7 +22,7 @@ export default function AgroAdvisorPage() {
             showResponse,
             loading,
             getLocation} = useContext(advisorContext)
-    
+
     const [formData, setFormData] = useState({
         crop: "",
         soilType: "",
@@ -69,11 +71,11 @@ export default function AgroAdvisorPage() {
                         </a>
                     </div>
 
-                    <button className="w-full bg-orange-400 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                    {/* <button className="w-full bg-orange-400 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
                         + New Form
-                    </button>
+                    </button> */}
 
-                    <div className="mt-4 relative">
+                    {/* <div className="mt-4 relative">
                         <input
                             type="text"
                             placeholder="Search"
@@ -92,12 +94,14 @@ export default function AgroAdvisorPage() {
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                             />
                         </svg>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Chat List */}
+
                 <div className="flex-1 overflow-y-auto flex justify-center items-center">
                      <Weather/>
+
                 </div>
 
                 {/* Sidebar Buttons */}
@@ -107,16 +111,20 @@ export default function AgroAdvisorPage() {
                             AgroAssist
                         </button>
                     </Link>
-                    <Link href="/agro-scan" className="w-[80%]">
-                        <button className="w-full bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors">
+                    <Link
+                        href="#"
+                        className="w-[80%]"
+                        title="Feature will arrive in future version"
+                    >
+                        <button className="w-full bg-orange-400 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors cursor-not-allowed">
                             AgroScan
                         </button>
                     </Link>
                 </div>
 
                 {/* User Profile */}
-                <div className="p-4 border-t">
-                    <div className="flex items-center space-x-3">
+                <div className="p-4 border-t flex">
+                    <div className="flex items-center space-x-3 flex-grow">
                         <div className="w-8 h-8 rounded-full bg-gray-200"></div>
                         <div className="flex-1">
                             <div className="font-medium">Julius Markwei</div>
@@ -125,6 +133,7 @@ export default function AgroAdvisorPage() {
                             </div>
                         </div>
                     </div>
+                    <LogoutButton />
                 </div>
             </div>
 
@@ -158,9 +167,7 @@ export default function AgroAdvisorPage() {
                     Agro-Advisor Form
                 </h1>
 
-                <div>
-                    
-                </div>
+                <div></div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex w-full space-x-3 ">
@@ -206,7 +213,7 @@ export default function AgroAdvisorPage() {
                                 name="cropStage"
                                 value={feildsValues.cropStage}
                                 onChange={fieldValuesChange}
-                                placeholder="Enter soil pH value"
+                                placeholder=""
                                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                             />
                         </div>
@@ -258,7 +265,7 @@ export default function AgroAdvisorPage() {
                     <div className="w-full flex space-x-3">
                         <div className="space-y-2 w-full">
                             <label className="block text-sm font-medium text-gray-700">
-                            Soil moisture
+                                Soil moisture
                             </label>
                             <input
                                 type="text"
@@ -300,11 +307,8 @@ export default function AgroAdvisorPage() {
                             />
                         </div>
 
-                        <div className="space-y-2 w-full">
-                           
-                        </div>
+                        <div className="space-y-2 w-full"></div>
                     </div>
-
 
                     <button
                         type="submit"
@@ -317,6 +321,8 @@ export default function AgroAdvisorPage() {
                             loading ?( <CircularProgress color="inherit" size={20} />):"Submit"
                         }
                     </button>
+
+                    
                 </form>
                         </div>
                     )

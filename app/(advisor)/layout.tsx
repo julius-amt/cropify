@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "../../app/globals.css";
 
-import {AdvisorContextProvider} from "@/app/_components/content/AdvisorContext"
+
+import { AdvisorContextProvider } from "@/app/_components/_content/AdvisorContext";
 
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
@@ -17,9 +18,5 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return (
-       <AdvisorContextProvider>
-        {children}
-       </AdvisorContextProvider>
-    );
+    return <AdvisorContextProvider>{children}</AdvisorContextProvider>;
 }

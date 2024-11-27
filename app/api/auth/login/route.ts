@@ -52,7 +52,7 @@ export const POST = async (req: NextRequest) => {
             },
             process.env.JWT_SECRET!,
             {
-                expiresIn: "6d",
+                expiresIn: "7d",
             }
         );
 

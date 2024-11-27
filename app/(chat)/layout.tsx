@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Archivo } from "next/font/google";
 import "../../app/globals.css";
-import { IndexContextProvider } from "@/app/_context/index";
-import { Toaster } from "react-hot-toast";
-import { ChatContextProvider } from "@/app/_components/content/ChatContent";
 
-// archivo font
-const inter = Archivo({ subsets: ["latin"] });
+import { ChatContextProvider } from "@/app/_components/_content/ChatContent";
+
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -18,9 +14,5 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return (
-       <ChatContextProvider>
-        {children}
-       </ChatContextProvider>
-    );
+    return <ChatContextProvider>{children}</ChatContextProvider>;
 }

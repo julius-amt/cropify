@@ -23,6 +23,7 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/(chat)/chat/page.jsx"],
+
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "try.mjs", "app/(chat)/chat/page.jsx", "app/_components/MarkDownRenderer.jsx"],
   "exclude": ["node_modules"]
 }
