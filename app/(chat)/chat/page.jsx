@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 "use client";
-// pages/chat.tsx
-import { useEffect, useState } from "react";
+
+import { useEffect } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { useContext } from "react";
 import MarkdownRenderer from "@/app/_components/MarkDownRenderer";
 import LogoutButton from "@/app/_components/LogoutButton";
 import Weather from "@/app/_components/weather/Weather";
+import AiImage from "@/public/ai.png";
 
 export default function ChatPage() {
     const {
@@ -21,8 +22,6 @@ export default function ChatPage() {
         sending,
         userMessage,
     } = useContext(chatContext);
-
-    const [prompt, setPrompt] = useState("");
 
     useEffect(() => {
         fetchChat();
@@ -113,26 +112,25 @@ export default function ChatPage() {
                                             <div className="bg-white p-4 rounded-lg shadow-sm">
                                                 <p className="text-gray-800">
                                                     {data?.message}
-                                                    {/* Write a 100-character meta description for
-                                                    my blog post about digital marketing. */}
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="flex space-x-4">
-                                        <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
+                                        <div className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center">
                                             <span className="text-white font-semibold">
-                                                C
+                                                <Image
+                                                    src={AiImage}
+                                                    alt=""
+                                                    width={50}
+                                                    height={50}
+                                                />
                                             </span>
                                         </div>
                                         <div className="flex-1">
-                                            <div className="bg-white p-4 rounded-lg shadow-sm">
+                                            <div className="bg-white p-4 rounded-lg shadow-sm mr-[30%]">
                                                 <p className="text-gray-800">
-                                                    {/* Master the art of digital marketing with
-                                                    expert strategies for online success. Unlock
-                                                    growth now! */}
-
                                                     <MarkdownRenderer
                                                         content={
                                                             data?.aiResponse

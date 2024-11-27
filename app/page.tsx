@@ -2,7 +2,6 @@
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import FarmingIllustration from "@/public/8065485.jpg";
-import { useIndexContext } from "@/app/_context/index";
 import Button from "./_components/Button";
 import Link from "next/link";
 import ChatIcon from "@/public/online-doctor-concept/3712074.jpg";
@@ -10,9 +9,6 @@ import FarmImage from "@/public/side-view-women-taking-care-plants.jpg";
 import PlantScan from "@/public/smiley-woman-holding-tablet-full-shot.jpg";
 
 const Home = () => {
-    const { state } = useIndexContext();
-
-
     return (
         <div className="bg-white min-h-dvh max-h-max">
             <header className="bg-[#FCF8F1] bg-opacity-30">
@@ -172,7 +168,7 @@ const Home = () => {
                             />
 
                             <div className="w-full max-w-md mx-auto xl:max-w-xl flex flex-col items-center justify-center">
-                                <Link href="#">
+                                <Link href="/chat">
                                     <Button
                                         content={
                                             <>
@@ -225,7 +221,7 @@ const Home = () => {
                             />
 
                             <div className="absolute bottom-3 right-3">
-                                <Link href="#">
+                                <Link href="/agro-advisor">
                                     <Button
                                         content={
                                             <>
@@ -281,7 +277,10 @@ const Home = () => {
                             />
 
                             <div className="absolute bottom-3 right-3">
-                                <Link href="/agro-scan">
+                                <Link
+                                    href="#"
+                                    title="Feature will arrive in future version"
+                                >
                                     <Button
                                         content={
                                             <>
@@ -302,7 +301,7 @@ const Home = () => {
                                                 </svg>
                                             </>
                                         }
-                                        className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
+                                        className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-not-allowed hover:bg-orange-400"
                                     />
                                 </Link>
                             </div>

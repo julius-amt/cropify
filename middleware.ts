@@ -5,14 +5,7 @@ export async function middleware(req: NextRequest) {
 
     const isAuth = req.cookies.get("token");
 
-    const sensitiveRoutes = [
-        "/chat",
-        "/agro-scan",
-        "/agro-advisor",
-        // "/dashboard",
-    ];
-
-    const isAccessingSensitiveRoute = sensitiveRoutes.includes(pathname);
+    const sensitiveRoutes = ["/chat", "/agro-scan", "/agro-advisor"];
 
     const sensitiveRoutesAfterLogin = [
         "/",
@@ -22,19 +15,24 @@ export async function middleware(req: NextRequest) {
         "/reset-password",
     ];
 
-    const isAccessingSensitiveRoutesAfterLogin =
-        sensitiveRoutesAfterLogin.includes(pathname);
-
-    if (!isAuth && isAccessingSensitiveRoute) {
+    // Redirect unauthenticated users trying to access sensitive routes
+    if (!isAuth && sensitiveRoutes.includes(pathname)) {
         return NextResponse.redirect(new URL("/login", req.url));
     }
 
-    if (pathname == "/") {
-        return NextResponse.redirect(new URL("/chat", req.url)); // should be changed to /dashboard after the dashboard is ready
+    // Allow unauthenticated users to access only the "/" path
+    if (!isAuth && pathname === "/") {
+        return NextResponse.next();
     }
 
-    if (isAuth && isAccessingSensitiveRoutesAfterLogin) {
-        return NextResponse.redirect(new URL("/chat", req.url));
+    // Redirect authenticated users accessing "/" to another route
+    if (isAuth && pathname === "/") {
+        return NextResponse.redirect(new URL("/chat", req.url)); // Change this to "/dashboard" when it's ready
+    }
+
+    // Prevent authenticated users from accessing routes like login, signup, etc.
+    if (isAuth && sensitiveRoutesAfterLogin.includes(pathname)) {
+        return NextResponse.redirect(new URL("/chat", req.url)); // Adjust to "/dashboard" if needed
     }
 }
 
@@ -48,6 +46,5 @@ export const config = {
         "/chat",
         "/agro-scan",
         "/agro-advisor",
-        // "/dashboard",
     ],
 };
