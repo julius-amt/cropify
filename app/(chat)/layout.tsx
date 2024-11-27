@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
-import "./globals.css";
+import "../../app/globals.css";
 import { IndexContextProvider } from "@/app/_context/index";
 import { Toaster } from "react-hot-toast";
-import {ChatContextProvider} from "@/src/content/ChatContent"
-import {AdvisorContextProvider} from "@/src/content/AdvisorContext"
+import { ChatContextProvider } from "@/src/content/ChatContent";
 
 // archivo font
 const inter = Archivo({ subsets: ["latin"] });
@@ -20,15 +19,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={`${inter.className} antialiased`}>
-                <Toaster
-                    position="top-center"
-                    reverseOrder={false}
-                    toastOptions={{ duration: 3000 }}
-                />
-                {children} 
-            </body>
-        </html>
+       <ChatContextProvider>
+        {children}
+       </ChatContextProvider>
     );
 }
