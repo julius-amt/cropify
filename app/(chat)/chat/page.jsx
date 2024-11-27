@@ -1,4 +1,3 @@
-
 /* eslint-disable react-hooks/exhaustive-deps */
 
 "use client";
@@ -12,7 +11,7 @@ import { useContext } from "react";
 import MarkdownRenderer from "@/app/_components/MarkDownRenderer";
 import LogoutButton from "@/app/_components/LogoutButton";
 import Weather from "@/app/_components/weather/Weather";
-  
+
 export default function ChatPage() {
     const {
         getUserMessage,
@@ -28,15 +27,13 @@ export default function ChatPage() {
     useEffect(() => {
         fetchChat();
     }, []);
-  
+
     return (
         <div className="h-screen flex bg-gray-50">
             {/* Sidebar */}
             <div className="w-80 bg-white border-r flex flex-col h-full">
-                <div className="p-4 border-b">
-
-                <div className="flex-shrink-0 py-5">
-
+                <div className="p-4 border-b flex-grow flex flex-col">
+                    <div className="flex-shrink-0 py-5 flex-grow">
                         <a href="#" title="" className="flex gap-2">
                             <Image
                                 className="w-auto h-8"
@@ -47,54 +44,29 @@ export default function ChatPage() {
                             />
                             <h1 className="font-bold text-2xl">CROPIFY</h1>
                         </a>
-                </div>
+                    </div>
 
-
-                {/* Chat List */}
-                <div className="flex-1 overflow-y-auto flex justify-center items-center">
-                     <Weather/>
-                </div>
-                <div className="flex items-center flex-col space-y-3 ">
-                  <Link href="/agro-scan" className="w-[80%]">
-                    <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full transition-all hover:transition-all hover:duration-150 hover:delay-200">
-                        AgroScan
-                    </button>
-                  </Link>
-                  <Link href="/agro-advisor" className="w-[80%]">
-                    <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:rounded-full hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
-                        AgroAdvisor
-                    </button>
-                  </Link>
-                </div>
-
-                {/* User Profile */}
-                <div className="p-4 border-t">
-                    <div className="flex items-center space-x-3">
-
-                    </div> */}
-                </div>
-
-                {/* Chat List */}
-               
-                    </div> */
-
-                <div className="flex items-center flex-col space-y-3 ">
-                    <Link
-                        href="#"
-                        className="w-[80%]"
-                        title="Feature will arrive in future version"
-                    >
-                        <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200 cursor-not-allowed">
-                            AgroScan
-                        </button>
-                    </Link>
-                    <Link href="/agro-advisor" className="w-[80%]">
-                        <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
-                            AgroAdvisor
-                        </button>
-                    </Link>
-                </div>
-
+                    {/* Chat List */}
+                    <div className="flex items-center flex-col space-y-3 gap-10 justify-center">
+                        <Weather />
+                        <div className="flex-1 overflow-y-auto flex flex-col gap-4 w-full justify-center items-center">
+                            <Link
+                                href="#"
+                                className="w-[80%]"
+                                title="Feature will arrive in future version"
+                            >
+                                <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200 cursor-not-allowed">
+                                    AgroScan
+                                </button>
+                            </Link>
+                            <Link href="/agro-advisor" className="w-[80%]">
+                                <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
+                                    AgroAdvisor
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>{" "}
                 {/* User Profile */}
                 <div className="p-4 border-t flex">
                     <div className="flex items-center space-x-3 flex-grow">
@@ -116,13 +88,11 @@ export default function ChatPage() {
                 {/* Chat Header */}
 
                 <div className="h-16 border-b bg-white flex items-center justify-between px-6">
-                    <h1 className="font-semibold text-lg">Agro-Assist</h1>
                     <div className="flex items-center space-x-4">
-                        <button className="p-2 hover:bg-gray-100 rounded-full">
-
-                <div className="h-16 border-b bg-white flex items-center justify-between">
-                    <h1 className="font-semibold text-lg ml-5">Agro-Assist</h1>
-
+                        <h1 className="font-semibold text-lg ml-5">
+                            Agro-Assist
+                        </h1>
+                    </div>
                 </div>
 
                 {/* Messages */}
@@ -140,7 +110,6 @@ export default function ChatPage() {
                                 >
                                     <div className="flex space-x-4">
                                         <div className="flex-1 ml-[40%]">
-
                                             <div className="bg-white p-4 rounded-lg shadow-sm">
                                                 <p className="text-gray-800">
                                                     {data?.message}
@@ -149,16 +118,13 @@ export default function ChatPage() {
                                                 </p>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div className="flex space-x-4">
                                         <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
-
                                             <span className="text-white font-semibold">
                                                 C
                                             </span>
-
                                         </div>
                                         <div className="flex-1">
                                             <div className="bg-white p-4 rounded-lg shadow-sm">
@@ -172,13 +138,11 @@ export default function ChatPage() {
                                                             data?.aiResponse
                                                         }
                                                     />
-
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             );
                         })
                     )}
@@ -199,7 +163,6 @@ export default function ChatPage() {
                             </div>
                         </div>
                     )}
-
                 </div>
 
                 {/* Input Area */}
@@ -211,13 +174,11 @@ export default function ChatPage() {
                             // onChange={(e) => setPrompt(e.target.value)}
                             onChange={getUserMessage}
                             placeholder="Enter a prompt here..."
-
                             className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-green-500"
                         />
                         <button
                             className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600"
                             onClick={() => postMessage()}
-
                         >
                             <svg
                                 className="w-5 h-5"
