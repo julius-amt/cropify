@@ -12,6 +12,7 @@ import MarkdownRenderer from "@/app/_components/MarkDownRenderer";
 import LogoutButton from "@/app/_components/LogoutButton";
 import Weather from "@/app/_components/weather/Weather";
 import AiImage from "@/public/ai.png";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export default function ChatPage() {
     const {
@@ -21,6 +22,8 @@ export default function ChatPage() {
         chats,
         sending,
         userMessage,
+        sentMessage,
+        handleKeyPress
     } = useContext(chatContext);
 
     useEffect(() => {
@@ -155,7 +158,7 @@ export default function ChatPage() {
                             <div className="flex-1">
                                 <div className="bg-white p-4 rounded-lg shadow-sm">
                                     <p className="text-gray-800">
-                                        {userMessage}
+                                        {sentMessage}
                                     </p>
                                 </div>
                             </div>
@@ -175,23 +178,36 @@ export default function ChatPage() {
                             className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-green-500"
                         />
                         <button
-                            className="absolute right-2 top-2 p-2 bg-orange-500 text-white rounded-lg hover:bg-green-600"
-                            onClick={() => postMessage()}
+                            className={`absolute right-2 top-2 p-2 ${!sending ? "bg-orange-500 text-white rounded-lg" : ""} hover:bg-green-600`}
+                            onClick={() => {postMessage(); handleKeyPress();}}
+                            disabled={sending}
                         >
-                            <svg
-                                className="w-5 h-5"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                                />
-                            </svg>
+                            {
+                                !sending ?(
+                                    <svg
+                                        className="w-5 h-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                        />
+                                    </svg>
+                                ):(
+                                    <CircularProgress
+                                        color="inherit"
+                                        size={20}
+                                    />
+                                )
+                            }
+                           
+                             
                         </button>
+                        
                     </div>
                     <div className="text-center mt-2 text-xs text-gray-500">
                         ChatAI has the potential to generate incorrect

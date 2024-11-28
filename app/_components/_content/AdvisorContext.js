@@ -22,6 +22,8 @@ export const AdvisorContextProvider = ({ children }) => {
             ...prevValues,
             [e.target.name]: e.target.value,
         }));
+        
+       // console.log(feildsValues)
     };
 
     const [location, setLocation] = useState({
@@ -39,7 +41,7 @@ export const AdvisorContextProvider = ({ children }) => {
         wind: "",
     });
 
-    const [aiResponse, setAiResponse] = useState("");
+    const [advisorResponse, setAdvisorResponse] = useState("");
     const [showResponse, setShowResponse] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -106,10 +108,12 @@ export const AdvisorContextProvider = ({ children }) => {
         }
     };
 
-    const postAdvisorDetails = async () => {
+    const postAdvisorDetails = async (lat, lon) => {
+        console.log("lat", lat, "my ", lon)
         try {
+            setLoading(true)
             const response = await fetch(
-                "http://localhost:3000/api/agro-advisor?lon=8.1&lat=1.2",
+                `http://localhost:3000/api/agro-advisor?lon=${lon}&lat=${lat}`,
                 {
                     method: "Post",
                     headers: {
@@ -126,6 +130,17 @@ export const AdvisorContextProvider = ({ children }) => {
                         disease: "Maize Streak Virus",
                         pests: "Armyworms, Stem borers",
                     }),
+                    body: JSON.stringify({
+                        crop: feildsValues.crop,
+                        cropStage: feildsValues.cropStage,
+                        keyWeeds: feildsValues.keyWeeds,
+                        spilType: feildsValues.soilType,
+                        spoilPH: feildsValues.soilPH,
+                        soilFertility: feildsValues.soilFertility,
+                        soilMointure: feildsValues.soilMoisture,
+                        disease: feildsValues.disease,
+                        pests: feildsValues.pests,
+                    }),
                 }
             );
 
@@ -133,9 +148,25 @@ export const AdvisorContextProvider = ({ children }) => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const data = await response.json();
+            if(response.ok){
+                const data = await response.json();
+                setAdvisorResponse(data?.data?.data?.content)
+                setLoading(false)
+                setFieldsValues({
+                    crop: "",
+                    cropStage: "",
+                    keyWeeds: "",
+                    soilType: "",
+                    soilPH: "",
+                    soilFertility: "",
+                    soilMoisture: "",
+                    disease: "",
+                    pests: "",
+                })
+            }
+            const data1 = await response.json();
 
-            console.log(data);
+            console.log(data1);
         } catch (error) {
             console.log("Error:", error);
         }
@@ -147,7 +178,7 @@ export const AdvisorContextProvider = ({ children }) => {
                 fieldValuesChange,
                 feildsValues,
                 postAdvisorDetails,
-                aiResponse,
+                advisorResponse,
                 showResponse,
                 loading,
                 getLocation,
