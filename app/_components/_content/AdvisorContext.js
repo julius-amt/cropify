@@ -22,6 +22,8 @@ export const AdvisorContextProvider = ({ children }) => {
             ...prevValues,
             [e.target.name]: e.target.value,
         }));
+        
+       // console.log(feildsValues)
     };
 
     const [location, setLocation] = useState({
@@ -108,6 +110,7 @@ export const AdvisorContextProvider = ({ children }) => {
 
     const postAdvisorDetails = async () => {
         try {
+            setLoading(true)
             const response = await fetch(
                 "http://localhost:3000/api/agro-advisor?lon=8.1&lat=1.2",
                 {
@@ -133,6 +136,9 @@ export const AdvisorContextProvider = ({ children }) => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
+            if(response.ok){
+                setLoading(true)
+            }
             const data = await response.json();
 
             console.log(data);

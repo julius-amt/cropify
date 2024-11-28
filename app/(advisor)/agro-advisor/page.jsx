@@ -328,7 +328,7 @@ export default function AgroAdvisorPage() {
                                     disabled={disableBtn()}
                                     className="w-48 bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
                                     style={{
-                                        cursor: disableBtn ? "not-allowed" : "",
+                                        cursor: disableBtn() ? "not-allowed" : "pointer",
                                     }}
                                 >
                                     {loading ? (
