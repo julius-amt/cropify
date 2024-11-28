@@ -107,9 +107,9 @@ export default function AgroAdvisorPage() {
                                     AgroScan
                                 </button>
                             </Link>
-                            <Link href="/agro-advisor" className="w-[80%]">
+                            <Link href="/chat" className="w-[80%]">
                                 <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
-                                    AgroAdvisor
+                                    AgroAssist
                                 </button>
                             </Link>
                         </div>
@@ -122,9 +122,9 @@ export default function AgroAdvisorPage() {
                         <div className="flex-1">
                             <div className="font-medium">
                                 {isLoadingUserData ? (
-                                    <div className="w-16 h-4 bg-gray-200"></div>
+                                    <div className="w-16 h-4"></div>
                                 ) : (
-                                    userData?.username
+                                    userData?.username?.toUpperCase()
                                 )}
                             </div>
                         </div>

@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
                 hostname: "www.google.com",
                 pathname: "**",
             },
+            {
+                protocol: "https",
+                hostname: "cdn.weatherapi.com",
+                pathname: "**",
+            },
         ],
     },
 };

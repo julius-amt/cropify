@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import PlantIcon from "@/public/plant.svg";
 import Link from "next/link";
@@ -26,9 +26,43 @@ export default function ChatPage() {
         handleKeyPress
     } = useContext(chatContext);
 
+    // make a request to get user information
+    const [isLoadingUserData, setIsLoadingUserData] = useState(false);
+    const [userData, setUserData] = useState(null);
+
+    const getUserInfo = async () => {
+        setIsLoadingUserData(true);
+        try {
+            const response = await fetch("/api/auth/users/me", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setUserData(data);
+            } else {
+                setUserData("Mr. User");
+            }
+        } catch (error) {}
+        setIsLoadingUserData(false);
+    };
+
     useEffect(() => {
         fetchChat();
+        getUserInfo();
     }, []);
+
+    // Scroll to the bottom whenever chats or sending status changes
+    const chatContainerRef = useRef(null);
+    useEffect(() => {
+        if (chatContainerRef.current) {
+            chatContainerRef.current.scrollTop =
+                chatContainerRef.current.scrollHeight;
+        }
+    }, [chats, sending]);
 
     return (
         <div className="h-screen flex bg-gray-50">
@@ -73,11 +107,12 @@ export default function ChatPage() {
                 <div className="p-4 border-t flex">
                     <div className="flex items-center space-x-3 flex-grow">
                         <div className="w-8 h-8 rounded-full bg-gray-200"></div>
-                        <div className="flex-1">
-                            <div className="font-medium">User Name</div>
-                            <div className="text-sm text-gray-500">
-                                Pro Plan
-                            </div>
+                        <div className="font-medium">
+                            {isLoadingUserData ? (
+                                <div className="w-16 h-4">Loading...</div>
+                            ) : (
+                                userData?.username?.toUpperCase()
+                            )}
                         </div>
                     </div>
 
@@ -98,7 +133,10 @@ export default function ChatPage() {
                 </div>
 
                 {/* Messages */}
-                <div className="flex-1 overflow-y-auto p-6 space-y-6">
+                <div
+                    ref={chatContainerRef} // Attach the ref here
+                    className="flex-1 overflow-y-auto p-6 space-y-6"
+                >
                     {!chats ? (
                         <h3 className="text-gray-700 font-medium text-2xl">
                             Loading...
@@ -150,11 +188,6 @@ export default function ChatPage() {
 
                     {sending && (
                         <div className="flex space-x-4 ml-[40%]">
-                            {/* <div className="w-8 h-8 rounded-lg bg-green-600 flex-shrink-0 flex items-center justify-center">
-                                <span className="text-white font-semibold">
-                                    C
-                                </span>
-                            </div> */}
                             <div className="flex-1">
                                 <div className="bg-white p-4 rounded-lg shadow-sm">
                                     <p className="text-gray-800">

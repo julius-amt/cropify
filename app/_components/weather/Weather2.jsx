@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect, useContext } from "react";
 import { advisorContext } from "@/app/_components/_content/AdvisorContext";
+import Image from "next/image";
 
 const Weather2 = () => {
-    const { getWeather, weatherValues, getLocation, location } =
+    const { getWeather, weatherValues, getLocation, coordinates } =
         useContext(advisorContext);
 
     useEffect(() => {
@@ -11,14 +13,19 @@ const Weather2 = () => {
     }, []);
 
     useEffect(() => {
-        if (location.lat && location.lon) {
-            console.log("Location updated:", location);
-            getWeather(location.lon, location.lat);
-        }
-    }, [location]);
+        getWeather();
+    }, [coordinates]);
 
     return (
-        <div className="bg-white text-black p-4 w-64 rounded-lg shadow-md">
+        <div className="bg-white h-60 text-black p-4 w-64 rounded-lg shadow-md">
+            {weatherValues?.icon && (
+                <Image
+                    src={`https:${weatherValues?.icon}`}
+                    alt="Weather icon"
+                    width={50}
+                    height={50}
+                />
+            )}
             <div className="mb-3">
                 <p className="text-lg font-semibold">{weatherValues?.name}</p>
                 <p className="text-sm text-gray-400">

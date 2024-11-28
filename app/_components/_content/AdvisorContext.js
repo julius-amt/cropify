@@ -22,11 +22,11 @@ export const AdvisorContextProvider = ({ children }) => {
             ...prevValues,
             [e.target.name]: e.target.value,
         }));
-        
-       // console.log(feildsValues)
+
+        // console.log(feildsValues)
     };
 
-    const [location, setLocation] = useState({
+    const [coordinates, setCoordinates] = useState({
         lon: "",
         lat: "",
     });
@@ -39,6 +39,7 @@ export const AdvisorContextProvider = ({ children }) => {
         temp: "",
         humidity: "",
         wind: "",
+        icon: "",
     });
 
     const [advisorResponse, setAdvisorResponse] = useState("");
@@ -52,34 +53,35 @@ export const AdvisorContextProvider = ({ children }) => {
                 throw new Error("Geolocation is not supported by your browser");
             }
 
-            // Wrap getCurrentPosition in a promise
-            const position = await new Promise((resolve, reject) => {
+            // Use promise with async/await to get geolocation
+            const response = await new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(resolve, reject, {
-                    timeout: 5000,
+                    timeout: 20000,
                     enableHighAccuracy: true,
+                    maximumAge: 0,
                 });
-            })
-                .then((position) => {
-                    console.log("posi", position);
-                    setLocation({
-                        ...location,
-                        lon: position.coords.longitude,
-                        lat: position.coords.latitude,
-                    });
-                    getWeather();
-                })
-                .then((res) => {});
+            });
+
+            // Once coordinates is received, log it and set the coordinates
+            const { latitude, longitude } = response.coords;
+
+            // Set the coordinates using the coordinates
+            setCoordinates({
+                lon: longitude,
+                lat: latitude,
+            });
         } catch (error) {
-            console.log("Error getting location:", error.message);
+            console.log("Error getting coordinates:", error.message);
             return null;
         }
     }
 
     const getWeather = async () => {
         try {
-            if (location.lat && location.lon) {
+            if (coordinates.lat && coordinates.lon) {
+                console.log("Coordinates:", coordinates);
                 const response = await fetch(
-                    `http://localhost:3000/api/weather?lon=${location.lon}&lat=${location.lat}`,
+                    `/api/weather?lon=${coordinates.lon}&lat=${coordinates.lat}`,
                     {
                         method: "get",
                         headers: {
@@ -100,6 +102,7 @@ export const AdvisorContextProvider = ({ children }) => {
                         condition: data?.data?.current?.condition.text,
                         humidity: data?.data?.current?.humidity,
                         wind: data?.data?.current?.wind_kph,
+                        icon: data?.data?.current?.condition.icon,
                     });
                 }
             }
@@ -109,11 +112,11 @@ export const AdvisorContextProvider = ({ children }) => {
     };
 
     const postAdvisorDetails = async (lat, lon) => {
-        console.log("lat", lat, "my ", lon)
+        console.log("lat", lat, "my ", lon);
         try {
-            setLoading(true)
+            setLoading(true);
             const response = await fetch(
-                `http://localhost:3000/api/agro-advisor?lon=${lon}&lat=${lat}`,
+                `/api/agro-advisor?lon=${coordinates.lon}&lat=${coordinates.lat}`,
                 {
                     method: "Post",
                     headers: {
@@ -148,10 +151,10 @@ export const AdvisorContextProvider = ({ children }) => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            if(response.ok){
+            if (response.ok) {
                 const data = await response.json();
-                setAdvisorResponse(data?.data?.data?.content)
-                setLoading(false)
+                setAdvisorResponse(data?.data?.data?.content);
+                setLoading(false);
                 setFieldsValues({
                     crop: "",
                     cropStage: "",
@@ -162,11 +165,12 @@ export const AdvisorContextProvider = ({ children }) => {
                     soilMoisture: "",
                     disease: "",
                     pests: "",
-                })
+                });
             }
             const data1 = await response.json();
 
             console.log(data1);
+            const data = await response.json();
         } catch (error) {
             console.log("Error:", error);
         }
@@ -184,7 +188,7 @@ export const AdvisorContextProvider = ({ children }) => {
                 getLocation,
                 getWeather,
                 weatherValues,
-                location,
+                coordinates,
             }}
         >
             {children}
