@@ -8,6 +8,8 @@ export const ChatContextProvider = ({ children }) => {
     const [chats, setChats] = useState([]);
     const [instantChat, setInstantChat] = useState([]);
     const [sending, setSending] = useState(false);
+    
+    const [sentMessage, setSentMessage] = useState("")
 
     const getUserMessage = (e) => {
         setUserMessage(e.target.value);
@@ -44,6 +46,7 @@ export const ChatContextProvider = ({ children }) => {
     };
 
     const postMessage = async () => {
+        setSentMessage(userMessage)
         try {
             setSending(true);
             const response = await fetch("/api/chat", {
@@ -72,6 +75,14 @@ export const ChatContextProvider = ({ children }) => {
             console.log("Error:", error.message);
         }
     };
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault(); 
+            postMessage();
+        }
+    };
+
     //getAllUserChat()
     return (
         <chatContext.Provider
@@ -82,6 +93,8 @@ export const ChatContextProvider = ({ children }) => {
                 chats,
                 userMessage,
                 sending,
+                sentMessage,
+                handleKeyPress
             }}
         >
             {children}

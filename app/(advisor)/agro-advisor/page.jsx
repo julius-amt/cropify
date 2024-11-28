@@ -19,10 +19,11 @@ export default function AgroAdvisorPage() {
         feildsValues,
         fieldValuesChange,
         postAdvisorDetails,
-        aiResponse,
+        advisorResponse,
         showResponse,
         loading,
         getLocation,
+        location
     } = useContext(advisorContext);
 
     const [formData, setFormData] = useState({
@@ -167,7 +168,7 @@ export default function AgroAdvisorPage() {
                                 },
                             }}
                         >
-                            {true && aiResponse}
+                            {true && advisorResponse}
                         </ReactMarkdown>
                     </div>
                 ) : (
@@ -324,7 +325,7 @@ export default function AgroAdvisorPage() {
                             <div className="w-full flex items-center justify-center">
                                 <button
                                     type="submit"
-                                    onClick={(e) => postAdvisorDetails()}
+                                    onClick={(e) => postAdvisorDetails(location.lat, location.lon )}
                                     disabled={disableBtn()}
                                     className="w-48 bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
                                     style={{
