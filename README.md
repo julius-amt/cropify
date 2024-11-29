@@ -1,5 +1,3 @@
----
-
 # Cropify - Empowering Farmers with AI Solutions
 
 **Cropify** is a forward-thinking agricultural platform that aims to revolutionize the farming industry through innovative artificial intelligence tools. By leveraging AI technology, Cropify assists farmers in enhancing their productivity and decision-making processes. This platform features two primary tools: **AgroAssist** and **AgroAdvisor**. These tools provide personalized, real-time support for farmers worldwide—whether they are managing small local farms or operating on a global scale.
