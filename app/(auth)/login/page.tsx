@@ -20,32 +20,32 @@ export default function Login() {
     };
 
     const handleLogin = async () => {
-    	setIsLoading(true);
-    	try {
-    		const response = await fetch("/api/auth/login", {
-    			method: "POST",
-    			headers: {
-    				"Content-Type": "application/json",
-    			},
-    			body: JSON.stringify({
-    				email: loginData.email,
-    				password: loginData.password,
-    			}),
-    		});
-    		if (response.ok) {
-    			toast.success("Logged in successfully 🎉", { duration: 4000 });
-    			router.push("/chat");
-    		} else if (response.status === 500) {
-    			toast.error("An error accoured, try again!", {
-    				duration: 4000,
-    			});
-    		} else {
-    			toast.error("Invalid credentials!", { duration: 4000 });
-    		}
-    	} catch (error: any) {
-    		throw new Error("Error", error);
-    	}
-    	setIsLoading(false);
+        setIsLoading(true);
+        try {
+            const response = await fetch("/api/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: loginData.email,
+                    password: loginData.password,
+                }),
+            });
+            if (response.ok) {
+                router.push("/chat");
+                toast.success("Logged in successfully 🎉", { duration: 4000 });
+            } else if (response.status === 500) {
+                toast.error("An error accoured, try again!", {
+                    duration: 4000,
+                });
+            } else {
+                toast.error("Invalid credentials!", { duration: 4000 });
+            }
+        } catch (error: any) {
+            throw new Error("Error", error);
+        }
+        setIsLoading(false);
     };
 
     const disableBtn = () => {
@@ -250,7 +250,7 @@ export default function Login() {
                                     </div>
                                     Sign in with Facebook
                                 </button>
-                            </div>  
+                            </div>
                         </div>
                     </div>
 
@@ -271,10 +271,10 @@ export default function Login() {
                                 </h3>
                                 <p className="leading-relaxed text-center text-gray-500 mt-2.5">
                                     Cropify is a platform that helps farmers
-									manage their farms, crops, and livestock
-									efficiently. It provides real-time insights
-									and recommendations to help farmers make
-									informed decisions.
+                                    manage their farms, crops, and livestock
+                                    efficiently. It provides real-time insights
+                                    and recommendations to help farmers make
+                                    informed decisions.
                                 </p>
 
                                 <div className="flex items-center justify-center mt-10 space-x-3">

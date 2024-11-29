@@ -13,6 +13,7 @@ import LogoutButton from "@/app/_components/LogoutButton";
 import Weather from "@/app/_components/weather/Weather";
 import AiImage from "@/public/ai.png";
 import CircularProgress from "@mui/material/CircularProgress";
+import NoMesageIllustration from "@/public/no message.svg";
 
 export default function ChatPage() {
     const {
@@ -82,7 +83,6 @@ export default function ChatPage() {
                         </a>
                     </div>
 
-                    {/* Chat List */}
                     <div className="flex items-center flex-col space-y-3 gap-10 justify-center">
                         <Weather />
                         <div className="flex-1 overflow-y-auto flex flex-col gap-4 w-full justify-center items-center">
@@ -141,6 +141,18 @@ export default function ChatPage() {
                         <h3 className="text-gray-700 font-medium text-2xl">
                             Loading...
                         </h3>
+                    ) : chats.length > 0 ? (
+                        <div className="h-screen w-full flex flex-col justify-center items-center">
+                            <Image
+                                src={NoMesageIllustration}
+                                alt="AI"
+                                width={500}
+                                height={500}
+                            />
+                            <span className="text-2xl text-gray-600 italic font-thin leading-relaxed">
+                                New messages will be displayed here
+                            </span>
+                        </div>
                     ) : (
                         chats?.map((data, index) => {
                             return (
