@@ -116,23 +116,23 @@ export const AdvisorContextProvider = ({ children }) => {
         try {
             setLoading(true);
             const response = await fetch(
-                `/api/agro-advisor?lon=${coordinates.lon}&lat=${coordinates.lat}`,
+                `/api/agro-advisor?lon=${-0.2012}&lat=${5.5486}`,
                 {
                     method: "Post",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify({
-                        crop: "Maize",
-                        cropStage: "Vegetative",
-                        keyWeeds: "Elephant grass, Crabgrass",
-                        spilType: "Loamy",
-                        spoilPH: "6.5",
-                        soilFertility: "Moderate",
-                        soilMointure: "High",
-                        disease: "Maize Streak Virus",
-                        pests: "Armyworms, Stem borers",
-                    }),
+                    // body: JSON.stringify({
+                    //     crop: "Maize",
+                    //     cropStage: "Vegetative",
+                    //     keyWeeds: "Elephant grass, Crabgrass",
+                    //     spilType: "Loamy",
+                    //     spoilPH: "6.5",
+                    //     soilFertility: "Moderate",
+                    //     soilMointure: "High",
+                    //     disease: "Maize Streak Virus",
+                    //     pests: "Armyworms, Stem borers",
+                    // }),
                     body: JSON.stringify({
                         crop: feildsValues.crop,
                         cropStage: feildsValues.cropStage,

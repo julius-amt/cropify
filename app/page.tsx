@@ -145,73 +145,70 @@ const Home = () => {
             {/* display features */}
 
             <section className="bg-white" id="features">
-                {/* <h1 className="text-black font-semibold leading-loose text-4xl flex justify-center items-center py-10">
-                    Cropify&lsquo;s Capabilities
-                </h1> */}
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                     <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
-                        {/* <div className="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto"> */}
                         <h1 className="text-9xl font-thin">
-                            Grow Better with Your Farming Assistant.
+                            Grow Better with Our Farming Assistant.
                         </h1>
-                        {/* </div> */}
                     </div>
 
-                    <div className="flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8">
-                        <div>
-                            <Image
-                                className="w-full mx-auto"
-                                src={ChatIcon}
-                                alt=""
-                                width={400}
-                                height={300}
-                            />
+                    <div className="flex items-center justify-center bg-gray-50">
+                        <div className="h-full">
+                            <div className="relative h-full w-full object-cover">
+                                <Image
+                                    className="w-full mx-auto"
+                                    src={ChatIcon}
+                                    alt=""
+                                    width={1000}
+                                    height={1000}
+                                />
 
-                            <div className="w-full max-w-md mx-auto xl:max-w-xl flex flex-col items-center justify-center">
-                                <Link href="/chat">
-                                    <Button
-                                        content={
-                                            <>
-                                                AgroAssist
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth={1.5}
-                                                    stroke="currentColor"
-                                                    className="size-7 ml-4"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                    />
-                                                </svg>
-                                            </>
-                                        }
-                                        className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
-                                    />
-                                </Link>
+                                <div className="absolute bottom-3 right-3">
+                                    <Link href="/chat">
+                                        <Button
+                                            content={
+                                                <>
+                                                    AgroAssist
+                                                    <svg
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        fill="none"
+                                                        viewBox="0 0 24 24"
+                                                        strokeWidth={1.5}
+                                                        stroke="currentColor"
+                                                        className="size-7 ml-4"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                        />
+                                                    </svg>
+                                                </>
+                                            }
+                                            className="text-2xl font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-center justify-center px-5 py-4 my-3 cursor-pointer hover:bg-orange-400"
+                                        />
+                                    </Link>
 
-                                <p className="leading-relaxed text-center text-gray-500 mt-2.5">
+                                    {/* <p className="leading-relaxed text-center text-gray-500 mt-2.5">
                                     Smart farming, powered by AI — your trusted
                                     farming assistant.
-                                </p>
+                                </p> */}
 
-                                <div className="flex items-center justify-center mt-10 space-x-3">
-                                    <div className="bg-orange-500 rounded-full w-20 h-1.5"></div>
+                                    {/* <div className="flex items-center justify-center mt-10 space-x-3">
+                                        <div className="bg-green-500 rounded-full w-20 h-1.5"></div>
 
-                                    <div className="bg-orange-300 rounded-full w-12 h-1.5"></div>
+                                        <div className="bg-green-300 rounded-full w-12 h-1.5"></div>
 
-                                    <div className="bg-orange-200 rounded-full w-12 h-1.5"></div>
+                                        <div className="bg-green-200 rounded-full w-12 h-1.5"></div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2">
-                    <div className="bg-gray-50 ">
-                        <div className="relative">
+                <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
+                    <div className="bg-gray-50 h-full">
+                        <div className="relative h-full">
                             <Image
                                 className="w-full mx-auto object-cover h-full"
                                 src={FarmImage}
@@ -258,7 +255,7 @@ const Home = () => {
                         </h1>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2">
+                {/* <div className="grid grid-cols-1 lg:grid-cols-2">
                     <div className="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
                         <h1 className="text-9xl font-thin">
                             Upload crop photos, get instant insights, and
@@ -307,14 +304,14 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </section>
 
             <footer className="">
                 <section className="py-5 bg-white sm:pt-16">
                     <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-[80%]">
                         <div className="grid grid-cols-2 gap-y-12 gap-x-4 xl:gap-x-8">
-                            <div className="xl:pr-8">
+                            <div className="xl:pr-8 flex flex-col justify-center items-center">
                                 <div className="flex-shrink-0">
                                     <a href="#" title="" className="flex gap-2">
                                         <Image
@@ -330,9 +327,8 @@ const Home = () => {
                                     </a>
                                 </div>
 
-                                <a
-                                    href="#"
-                                    title=""
+                                <Link
+                                    href="/chat"
                                     className="inline-flex items-center justify-center px-6 py-4 font-semibold text-white transition-all duration-200 bg-green-600 rounded-md hover:bg-green-700 focus:bg-green-700 mt-7"
                                 >
                                     <svg
@@ -349,60 +345,19 @@ const Home = () => {
                                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
                                         />
                                     </svg>
-                                    Start Chat now
-                                </a>
+                                    Start your conversation now
+                                </Link>
                             </div>
 
-                            <div className="flex flex-col justify-start items-center">
-                                <p className="font-bold text-gray-900 text-3xl">
-                                    Company
-                                </p>
-
-                                <ul className="mt-6 flex gap-4">
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
-                                        >
-                                            {" "}
-                                            About{" "}
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
-                                        >
-                                            {" "}
-                                            Features{" "}
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
-                                        >
-                                            {" "}
-                                            Works{" "}
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a
-                                            href="#"
-                                            title=""
-                                            className="flex text-sm text-gray-800 transition-all duration-200 hover:text-orange-500 focus:text-orange-500"
-                                        >
-                                            {" "}
-                                            Career{" "}
-                                        </a>
-                                    </li>
-                                </ul>
+                            <div className="flex justify-center items-center space-x-4">
+                                <span className="text-gray-500 font-thin text-2xl italic">
+                                    &quot;Equipping farmers with tomorrow&apos;s
+                                    tools to cultivate smarter solutions
+                                    today.&quot;{" "}
+                                    <span className="text-gray-500 text-xl ml-8">
+                                        <span className="mr-2">-</span> CEO
+                                    </span>
+                                </span>
                             </div>
                         </div>
 

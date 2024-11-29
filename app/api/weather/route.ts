@@ -7,12 +7,12 @@ export const GET = async (request: NextRequest) => {
     try {
         // get coordinates from query params
         const params = request.nextUrl.searchParams;
-        const lon = params.get("lon");
+        const lon = params.get("lon"); // value not beign used because the values are not being accurate
         const lat = params.get("lat");
 
         // fetch weather info from weatherapi.com
         const response = await fetch(
-            `${WEATHER_API_BASE_URL}?key=${WEATHER_API_KEY}&q=${lat},${lon}`
+            `${WEATHER_API_BASE_URL}?key=${WEATHER_API_KEY}&q=${5.5486},${-0.2012}`
         );
 
         if (response.ok) {

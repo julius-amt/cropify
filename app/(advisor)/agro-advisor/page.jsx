@@ -13,6 +13,7 @@ import { darcula } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import CircularProgress from "@mui/material/CircularProgress";
 import Weather from "@/app/_components/weather/Weather";
 import LogoutButton from "@/app/_components/LogoutButton";
+import ToolTip from "@/app/_components/ToolTip";
 
 export default function AgroAdvisorPage() {
     const {
@@ -23,7 +24,7 @@ export default function AgroAdvisorPage() {
         showResponse,
         loading,
         getLocation,
-        location
+        location,
     } = useContext(advisorContext);
 
     const [formData, setFormData] = useState({
@@ -98,7 +99,7 @@ export default function AgroAdvisorPage() {
                     <div className="flex items-center flex-col space-y-3 gap-10 justify-center">
                         <Weather />
                         <div className="flex-1 overflow-y-auto flex flex-col gap-4 w-full justify-center items-center">
-                            <Link
+                            {/* <Link
                                 href="#"
                                 className="w-[80%]"
                                 title="Feature will arrive in future version"
@@ -106,7 +107,7 @@ export default function AgroAdvisorPage() {
                                 <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200 cursor-not-allowed">
                                     AgroScan
                                 </button>
-                            </Link>
+                            </Link> */}
                             <Link href="/chat" className="w-[80%]">
                                 <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
                                     AgroAssist
@@ -180,11 +181,8 @@ export default function AgroAdvisorPage() {
                         <div></div>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            <div className="flex w-full space-x-3 ">
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Crop
-                                    </label> */}
+                            <div className="flex w-full space-x-3">
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="crop"
@@ -193,6 +191,10 @@ export default function AgroAdvisorPage() {
                                         placeholder="Crop name"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* Tooltip Icon */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2 group">
+                                        <ToolTip message="Enter the name of the crop being cultivated (e.g., Rice, Maize, Wheat, Tomatoes)." />
+                                    </div>
                                 </div>
 
                                 <div className="space-y-2 w-full">
@@ -215,11 +217,9 @@ export default function AgroAdvisorPage() {
                                 </div>
                             </div>
 
-                            <div className="flex w-full space-x-3 ">
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Crop stage
-                                    </label> */}
+                            <div className="flex w-full space-x-3">
+                                {/* Crop Stage Input with Tooltip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="cropStage"
@@ -228,71 +228,82 @@ export default function AgroAdvisorPage() {
                                         placeholder="Crop Stage"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* Tooltip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Specify the stage of crop growth (e.g., seedling, flowering)." />
+                                    </div>
                                 </div>
 
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        key weeds
-                                    </label> */}
+                                {/* Key Weeds Input with ToolTip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="keyWeeds"
-                                        value={feildsValues.pest}
+                                        value={feildsValues.keyWeeds}
                                         onChange={fieldValuesChange}
                                         placeholder="Key Weeds"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* ToolTip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Enter the names of significant weeds affecting the crop." />
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="w-full flex space-x-3">
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        SoilPH
-                                    </label> */}
+                                {/* Soil PH Input with Tooltip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="soilPH"
                                         value={feildsValues.soilPH}
                                         onChange={fieldValuesChange}
-                                        placeholder="Soin PH value"
+                                        placeholder="Soil PH value"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* Tooltip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Enter the pH value of the soil (e.g., 5.5, 7.0)." />
+                                    </div>
                                 </div>
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Soil fertility
-                                    </label> */}
+
+                                {/* Soil Fertility Input with ToolTip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="soilFertility"
                                         value={feildsValues.soilFertility}
                                         onChange={fieldValuesChange}
-                                        placeholder="Soil fertility"
+                                        placeholder="Soil Fertility"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* ToolTip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Indicate soil fertility level (e.g., low, medium, high)." />
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="w-full flex space-x-3">
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Soil moisture
-                                    </label> */}
+                                {/* Soil Moisture Input with Tooltip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="soilMoisture"
                                         value={feildsValues.soilMoisture}
                                         onChange={fieldValuesChange}
-                                        placeholder="Soil moisture"
+                                        placeholder="Soil Moisture"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* Tooltip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Enter soil moisture level (e.g., 20%, 50%, 80%)." />
+                                    </div>
                                 </div>
 
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Disease
-                                    </label> */}
+                                {/* Disease Input with ToolTip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="disease"
@@ -301,14 +312,16 @@ export default function AgroAdvisorPage() {
                                         placeholder="Disease"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* ToolTip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Specify the disease affecting the crop, if any (e.g., Blight, Rust, Powdery Mildew, Downy Mildew, Leaf Spot, Black Rot, Fusarium Wilt, Anthracnose)." />
+                                    </div>
                                 </div>
                             </div>
 
                             <div className="w-full flex space-x-3">
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Pests
-                                    </label> */}
+                                {/* Pests Input with Tooltip */}
+                                <div className="space-y-2 w-full relative">
                                     <input
                                         type="text"
                                         name="pests"
@@ -317,19 +330,31 @@ export default function AgroAdvisorPage() {
                                         placeholder="Pests"
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
+                                    {/* Tooltip Component */}
+                                    <div className="absolute top-[35%] right-3 transform -translate-y-1/2">
+                                        <ToolTip message="Enter pests affecting crops (e.g., Aphids, Armyworms, Whiteflies, Cutworms, Grasshoppers, Spider Mites, Root Nematodes)." />
+                                    </div>
                                 </div>
 
+                                {/* Empty Div for Alignment */}
                                 <div className="space-y-2 w-full"></div>
                             </div>
 
                             <div className="w-full flex items-center justify-center">
                                 <button
                                     type="submit"
-                                    onClick={(e) => postAdvisorDetails(location.lat, location.lon )}
+                                    onClick={(e) =>
+                                        postAdvisorDetails(
+                                            location.lat,
+                                            location.lon
+                                        )
+                                    }
                                     disabled={disableBtn()}
                                     className="w-48 bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
                                     style={{
-                                        cursor: disableBtn() ? "not-allowed" : "pointer",
+                                        cursor: disableBtn()
+                                            ? "not-allowed"
+                                            : "pointer",
                                     }}
                                 >
                                     {loading ? (

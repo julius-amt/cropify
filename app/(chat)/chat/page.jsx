@@ -23,7 +23,7 @@ export default function ChatPage() {
         sending,
         userMessage,
         sentMessage,
-        handleKeyPress
+        handleKeyPress,
     } = useContext(chatContext);
 
     // make a request to get user information
@@ -86,7 +86,7 @@ export default function ChatPage() {
                     <div className="flex items-center flex-col space-y-3 gap-10 justify-center">
                         <Weather />
                         <div className="flex-1 overflow-y-auto flex flex-col gap-4 w-full justify-center items-center">
-                            <Link
+                            {/* <Link
                                 href="#"
                                 className="w-[80%]"
                                 title="Feature will arrive in future version"
@@ -94,7 +94,7 @@ export default function ChatPage() {
                                 <button className="w-full bg-orange-500  text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-all hover:transition-all hover:duration-150 hover:delay-200 cursor-not-allowed">
                                     AgroScan
                                 </button>
-                            </Link>
+                            </Link> */}
                             <Link href="/agro-advisor" className="w-[80%]">
                                 <button className="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 hover:transition-all hover:duration-150 hover:delay-200 transition-colors">
                                     AgroAdvisor
@@ -211,36 +211,35 @@ export default function ChatPage() {
                             className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-green-500"
                         />
                         <button
-                            className={`absolute right-2 top-2 p-2 ${!sending ? "bg-orange-500 text-white rounded-lg" : ""} hover:bg-green-600`}
-                            onClick={() => {postMessage(); handleKeyPress();}}
+                            className={`absolute right-2 top-2 p-2 ${
+                                !sending
+                                    ? "bg-orange-500 text-white rounded-lg"
+                                    : ""
+                            } hover:bg-green-600`}
+                            onClick={() => {
+                                postMessage();
+                                handleKeyPress();
+                            }}
                             disabled={sending}
                         >
-                            {
-                                !sending ?(
-                                    <svg
-                                        className="w-5 h-5"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                                        />
-                                    </svg>
-                                ):(
-                                    <CircularProgress
-                                        color="inherit"
-                                        size={20}
+                            {!sending ? (
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"
                                     />
-                                )
-                            }
-                           
-                             
+                                </svg>
+                            ) : (
+                                <CircularProgress color="inherit" size={20} />
+                            )}
                         </button>
-                        
                     </div>
                     <div className="text-center mt-2 text-xs text-gray-500">
                         ChatAI has the potential to generate incorrect

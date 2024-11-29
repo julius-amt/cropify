@@ -20,6 +20,8 @@ export const POST = async (request: NextRequest) => {
         const params = request.nextUrl.searchParams;
         const lon = params.get("lon");
         const lat = params.get("lat");
+        console.log("lon", lon);
+        console.log("lat", lat);
 
         // fetch weather data through local /weather enpoint to the weatherapi.com
         const response = await fetch(
