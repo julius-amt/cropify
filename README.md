@@ -1,3 +1,5 @@
+---
+
 # Cropify - Empowering Farmers with AI Solutions
 
 **Cropify** is a forward-thinking agricultural platform that aims to revolutionize the farming industry through innovative artificial intelligence tools. By leveraging AI technology, Cropify assists farmers in enhancing their productivity and decision-making processes. This platform features two primary tools: **AgroAssist** and **AgroAdvisor**. These tools provide personalized, real-time support for farmers worldwide—whether they are managing small local farms or operating on a global scale.
@@ -25,6 +27,10 @@ The core of the Cropify platform consists of two powerful AI-driven features:
 
 Both features are built with the understanding that farming can be a difficult and complex task, and Cropify seeks to alleviate this burden through automation, machine learning, and personalized support.
 
+**Placeholder for Screenshot: Cropify Overview**
+
+---
+
 ## Features
 
 ### AgroAssist - AI-Powered Chatbot for Farmers
@@ -39,6 +45,10 @@ Both features are built with the understanding that farming can be a difficult a
 -   **Quick Responses to Common Queries**: Frequently asked questions (FAQs) and general farming advice are provided instantly, saving farmers time and effort.
 -   **User-Friendly Interface**: Designed for ease of use, AgroAssist provides an intuitive conversational interface that can be accessed by farmers of all technological backgrounds.
 
+**Placeholder for Screenshot: AgroAssist Chat Interface**
+
+---
+
 ### AgroAdvisor - AI Model for Agricultural Cultivation Support
 
 **AgroAdvisor** is a sophisticated AI model designed to assist farmers during the crucial cultivation periods. It integrates data such as weather forecasts, pest control insights, and optimal crop management practices to offer tailored guidance at different stages of crop growth.
@@ -52,6 +62,10 @@ Both features are built with the understanding that farming can be a difficult a
 -   **Tailored Recommendations**: Every piece of advice is tailored to the farmer’s specific location, crops, and growing conditions, allowing for a more precise and effective farming strategy.
 
 Together, AgroAssist and AgroAdvisor form the heart of Cropify’s mission: to empower farmers with intelligent, data-driven tools that enable them to grow smarter today, securing better yields for tomorrow.
+
+**Placeholder for Screenshot: AgroAdvisor Interface**
+
+---
 
 ## Project Structure
 
@@ -86,7 +100,9 @@ The project follows a well-structured directory layout, designed to organize var
 └── tsconfig.json                    # TypeScript configuration
 ```
 
-This structure is optimized for scalability, with distinct sections for user authentication, AI models, APIs, and reusable components. This allows for easy management and future enhancements as the platform grows.
+**Placeholder for Screenshot: Project Structure Overview**
+
+---
 
 ## Installation
 
@@ -135,6 +151,10 @@ Ensure that you have the following installed before proceeding:
 
     Once the server is running, the application will be accessible at `http://localhost:3000`.
 
+**Placeholder for Screenshot: Local Development Server Running**
+
+---
+
 ## Usage
 
 Once the app is up and running, you can begin exploring its core features.
@@ -143,13 +163,25 @@ Once the app is up and running, you can begin exploring its core features.
 
 To interact with **AgroAssist**, click on the chatbot interface and start a conversation. You can ask questions related to farming, pest control, irrigation, or crop management, and AgroAssist will respond with relevant, AI-driven advice.
 
+**Placeholder for Screenshot: AgroAssist Chat in Action**
+
+---
+
 ### AgroAdvisor (Cultivation Support)
 
 For tailored agricultural advice during the growing season, navigate to the **AgroAdvisor** section. The platform will provide specific recommendations based on your crop type, local weather conditions, and growth stage. This includes insights on the best time for planting, irrigation practices, pest control, and more.
 
+**Placeholder for Screenshot: AgroAdvisor Recommendations**
+
+---
+
 ### Authentication
 
 Users can sign up, log in, and reset their passwords through the authentication pages. Once logged in, users gain access to personalized farming assistance through **AgroAssist** and **AgroAdvisor**.
+
+**Placeholder for Screenshot: Authentication Page**
+
+---
 
 ## Contributing
 
@@ -163,6 +195,8 @@ We welcome contributions to the **Cropify** project! If you’d like to help imp
 
 We appreciate all contributions, whether large or small!
 
+---
+
 ## License
 
-**Cropify** is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute the code as long as you comply with the terms of the license.
+**Cropify** is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute the code, subject to the terms outlined in the license.
