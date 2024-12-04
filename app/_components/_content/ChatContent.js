@@ -32,7 +32,11 @@ export const ChatContextProvider = ({ children }) => {
             const result = await response.json();
 
             if (result.success) {
-                setChats(result?.data); // Updates the state with the fetched data array
+                const data = result?.data
+                const sorted = data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+                setChats(sorted)
+                // setChats(result?.data); // Updates the state with the fetched data array
+                console.log(result?.data)
             } else {
                 console.error(
                     "Failed to fetch data. Server response not successful."
