@@ -14,6 +14,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Weather from "@/app/_components/weather/Weather";
 import LogoutButton from "@/app/_components/LogoutButton";
 import ToolTip from "@/app/_components/ToolTip";
+import Button from "@/app/_components/Button"
+
 
 export default function AgroAdvisorPage() {
     const {
@@ -25,6 +27,7 @@ export default function AgroAdvisorPage() {
         loading,
         getLocation,
         location,
+        returnToForms
     } = useContext(advisorContext);
 
     const [formData, setFormData] = useState({
@@ -46,7 +49,8 @@ export default function AgroAdvisorPage() {
     }, []);
 
     const disableBtn = () => {
-        return Object.values(feildsValues).includes("");
+        const requiredFields = ["crop", "cropStage", "soilType"];
+        return !requiredFields.every((field) => feildsValues[field]);
     };
 
     // make a request to get user information
@@ -136,7 +140,30 @@ export default function AgroAdvisorPage() {
             </div>
 
             {/* Main Form Area */}
+            
             <div className="flex-1 flex flex-col p-6">
+                {!showResponse ? null : (
+                     <button
+                     className="font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-start justify-start my-3 cursor-pointer hover:bg-orange-400"
+                     onClick = {returnToForms}
+                     >  
+                     <svg
+                      
+                         xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         strokeWidth={1.5}
+                         stroke="currentColor"
+                         className="size-7"
+                     >
+                         <path
+                             strokeLinecap="round"
+                             strokeLinejoin="round"
+                             d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                         />
+                     </svg>
+                 </button>
+                )}
                 {showResponse ? (
                     <div className="bg-white p-4 rounded-lg shadow-sm">
                         <ReactMarkdown
@@ -189,6 +216,7 @@ export default function AgroAdvisorPage() {
                                         value={feildsValues.crop}
                                         onChange={fieldValuesChange}
                                         placeholder="Crop name"
+                                        required
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     />
                                     {/* Tooltip Icon */}
@@ -204,6 +232,7 @@ export default function AgroAdvisorPage() {
                                     <select
                                         name="soilType"
                                         value={feildsValues.soilType}
+                                        required
                                         onChange={fieldValuesChange}
                                         className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                                     >
@@ -223,6 +252,7 @@ export default function AgroAdvisorPage() {
                                     <input
                                         type="text"
                                         name="cropStage"
+                                        required
                                         value={feildsValues.cropStage}
                                         onChange={fieldValuesChange}
                                         placeholder="Crop Stage"
@@ -345,8 +375,8 @@ export default function AgroAdvisorPage() {
                                     type="submit"
                                     onClick={(e) =>
                                         postAdvisorDetails(
-                                            location.lat,
-                                            location.lon
+                                            5.5486,
+                                            -0.2012
                                         )
                                     }
                                     disabled={disableBtn()}
