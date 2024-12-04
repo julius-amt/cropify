@@ -217,6 +217,10 @@ export default function AgroAdvisorPage() {
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="flex w-full space-x-3">
                                 <div className="space-y-2 w-full relative">
+                                    {/* show a red dot as required */}
+                                    <div className="absolute -top-1 left-3 text-red-500">
+                                        *
+                                    </div>
                                     <input
                                         type="text"
                                         name="crop"
@@ -232,10 +236,10 @@ export default function AgroAdvisorPage() {
                                     </div>
                                 </div>
 
-                                <div className="space-y-2 w-full">
-                                    {/* <label className="block text-sm font-medium text-gray-700">
-                                        Soil Type
-                                    </label> */}
+                                <div className="space-y-2 w-full relative">
+                                    <div className="absolute -top-[0.30rem] left-3 text-red-500">
+                                        *
+                                    </div>
                                     <select
                                         name="soilType"
                                         value={feildsValues.soilType}
@@ -256,6 +260,9 @@ export default function AgroAdvisorPage() {
                             <div className="flex w-full space-x-3">
                                 {/* Crop Stage Input with Tooltip */}
                                 <div className="space-y-2 w-full relative">
+                                    <div className="absolute -top-1 left-3 text-red-500">
+                                        *
+                                    </div>
                                     <input
                                         type="text"
                                         name="cropStage"
