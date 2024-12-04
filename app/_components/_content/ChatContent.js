@@ -66,15 +66,18 @@ export const ChatContextProvider = ({ children }) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-
+            setUserMessage(null)
+            console.log("message", userMessage)
             if (response.ok) {
                 const data = await response.json();
                 setChats([...chats, data?.data]);
+                setUserMessage(null)
                 setSending(false);
             }
 
             // setChats([...chats, data])
             console.log("Response:", data?.data);
+
         } catch (error) {
             console.log("Error:", error.message);
         }
