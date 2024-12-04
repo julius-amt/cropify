@@ -14,8 +14,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Weather from "@/app/_components/weather/Weather";
 import LogoutButton from "@/app/_components/LogoutButton";
 import ToolTip from "@/app/_components/ToolTip";
-import Button from "@/app/_components/Button"
-
+import Button from "@/app/_components/Button";
 
 export default function AgroAdvisorPage() {
     const {
@@ -27,7 +26,7 @@ export default function AgroAdvisorPage() {
         loading,
         getLocation,
         location,
-        returnToForms
+        returnToForms,
     } = useContext(advisorContext);
 
     const [formData, setFormData] = useState({
@@ -140,65 +139,73 @@ export default function AgroAdvisorPage() {
             </div>
 
             {/* Main Form Area */}
-            
+
             <div className="flex-1 flex flex-col p-6">
                 {!showResponse ? null : (
-                     <button
-                     className="font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-start justify-start my-3 cursor-pointer hover:bg-orange-400"
-                     onClick = {returnToForms}
-                     >  
-                     <svg
-                      
-                         xmlns="http://www.w3.org/2000/svg"
-                         fill="none"
-                         viewBox="0 0 24 24"
-                         strokeWidth={1.5}
-                         stroke="currentColor"
-                         className="size-7"
-                     >
-                         <path
-                             strokeLinecap="round"
-                             strokeLinejoin="round"
-                             d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                         />
-                     </svg>
-                 </button>
+                    <button
+                        className="font-medium text-center text-white rounded-full bg-orange-500 w-max flex items-start justify-start my-3 cursor-pointer hover:bg-orange-400"
+                        onClick={returnToForms}
+                        title="Back to form"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-7 p-1"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+                            />
+                        </svg>
+                    </button>
                 )}
                 {showResponse ? (
-                    <div className="bg-white p-4 rounded-lg shadow-sm">
-                        <ReactMarkdown
-                            components={{
-                                code({
-                                    inline,
-                                    className,
-                                    children,
-                                    ...props
-                                }) {
-                                    const match = /language-(\w+)/.exec(
-                                        className || ""
-                                    );
-                                    return !inline && match ? (
-                                        <SyntaxHighlighter
-                                            style={darcula}
-                                            language={match[1]}
-                                            {...props}
-                                        >
-                                            {String(children).replace(
-                                                /\n$/,
-                                                ""
-                                            )}
-                                        </SyntaxHighlighter>
-                                    ) : (
-                                        <code className={className} {...props}>
-                                            {children}
-                                        </code>
-                                    );
-                                },
-                            }}
-                        >
-                            {true && advisorResponse}
-                        </ReactMarkdown>
-                    </div>
+                    <>
+                        <h1 className="text-3xl font-medium py-3">
+                            AgroAdvisor Response
+                        </h1>
+                        <div className="bg-white p-4 rounded-lg shadow-sm">
+                            <ReactMarkdown
+                                components={{
+                                    code({
+                                        inline,
+                                        className,
+                                        children,
+                                        ...props
+                                    }) {
+                                        const match = /language-(\w+)/.exec(
+                                            className || ""
+                                        );
+                                        return !inline && match ? (
+                                            <SyntaxHighlighter
+                                                style={darcula}
+                                                language={match[1]}
+                                                {...props}
+                                            >
+                                                {String(children).replace(
+                                                    /\n$/,
+                                                    ""
+                                                )}
+                                            </SyntaxHighlighter>
+                                        ) : (
+                                            <code
+                                                className={className}
+                                                {...props}
+                                            >
+                                                {children}
+                                            </code>
+                                        );
+                                    },
+                                }}
+                            >
+                                {true && advisorResponse}
+                            </ReactMarkdown>
+                        </div>
+                    </>
                 ) : (
                     <div>
                         <h1 className="text-2xl font-semibold mb-6">
@@ -374,10 +381,7 @@ export default function AgroAdvisorPage() {
                                 <button
                                     type="submit"
                                     onClick={(e) =>
-                                        postAdvisorDetails(
-                                            5.5486,
-                                            -0.2012
-                                        )
+                                        postAdvisorDetails(5.5486, -0.2012)
                                     }
                                     disabled={disableBtn()}
                                     className="w-48 bg-orange-400 text-white py-3 rounded-lg hover:bg-green-500 transition-colors"
