@@ -106,7 +106,11 @@ export const POST = async (request: NextRequest) => {
                 "Content-Type": "application/json",
                 "X-API-KEY": `${AMALIAI_KEY}`,
             },
-            body: JSON.stringify({ prompt, stream: false }),
+            body: JSON.stringify({
+                prompt,
+                stream: false,
+                modelId: process.env.AMALIAI_MODEL_ID,
+            }),
         });
 
         if (aiResponse.ok) {

@@ -141,7 +141,7 @@ export default function ChatPage() {
                         <h3 className="text-gray-700 font-medium text-2xl">
                             Loading...
                         </h3>
-                    ) : chats.length > 0 ? (
+                    ) : chats.length === 0 ? (
                         <div className="h-screen w-full flex flex-col justify-center items-center">
                             <Image
                                 src={NoMesageIllustration}
