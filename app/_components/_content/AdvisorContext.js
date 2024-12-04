@@ -111,6 +111,11 @@ export const AdvisorContextProvider = ({ children }) => {
         }
     };
 
+    const returnToForms = ()=>{
+        setShowResponse(!showResponse)
+        console.log("click")
+    }
+
     const postAdvisorDetails = async (lat, lon) => {
         console.log("lat", lat, "my ", lon);
         try {
@@ -154,7 +159,9 @@ export const AdvisorContextProvider = ({ children }) => {
             if (response.ok) {
                 const data = await response.json();
                 setAdvisorResponse(data?.data?.data?.content);
+                console.log("crop", data?.data?.data?.content)
                 setLoading(false);
+                setShowResponse(true)
                 setFieldsValues({
                     crop: "",
                     cropStage: "",
@@ -189,6 +196,7 @@ export const AdvisorContextProvider = ({ children }) => {
                 getWeather,
                 weatherValues,
                 coordinates,
+                returnToForms
             }}
         >
             {children}
