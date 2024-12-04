@@ -63,6 +63,8 @@ export const ChatContextProvider = ({ children }) => {
                 }),
             });
 
+            setUserMessage(null)
+
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -84,11 +86,13 @@ export const ChatContextProvider = ({ children }) => {
     };
 
     const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-            event.preventDefault(); 
+        console.log("Key Pressed: ", event.key);
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent default behavior like form submission
             postMessage();
         }
     };
+    
 
     //getAllUserChat()
     return (

@@ -218,7 +218,9 @@ export default function ChatPage() {
                             type="text"
                             // value={prompt}
                             // onChange={(e) => setPrompt(e.target.value)}
+                            value={userMessage || ""} 
                             onChange={getUserMessage}
+                            onKeyDown={handleKeyPress}
                             placeholder="Enter a prompt here..."
                             className="w-full pr-12 pl-4 py-3 rounded-lg border focus:outline-none focus:border-green-500"
                         />
@@ -229,9 +231,9 @@ export default function ChatPage() {
                                     : ""
                             } hover:bg-green-600`}
                             onClick={() => {
-                                postMessage();
-                                handleKeyPress();
+                                postMessage()
                             }}
+                            
                             disabled={sending}
                         >
                             {!sending ? (
